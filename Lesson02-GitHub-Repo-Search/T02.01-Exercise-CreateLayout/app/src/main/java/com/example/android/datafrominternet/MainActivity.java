@@ -22,10 +22,10 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText mSearchBoxEditText;
+    private EditText mSearchBoxEditText;
 
-    TextView mUrlDisplayTextView;
-    TextView mSearchResultsTextView;
+    private TextView mUrlDisplayTextView;
+    private TextView mSearchResultsTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
