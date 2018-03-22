@@ -107,7 +107,9 @@ public class MainActivity extends AppCompatActivity implements  GreenAdapter.Lis
             mToast.cancel();
         }
 
-        mToast.setText(String.valueOf(selItemIndex));
+        String toastMessage = "Item #" + selItemIndex + " clicked.";
+        mToast = Toast.makeText(this, toastMessage, Toast.LENGTH_LONG);
+
         mToast.show();
     }
 }
