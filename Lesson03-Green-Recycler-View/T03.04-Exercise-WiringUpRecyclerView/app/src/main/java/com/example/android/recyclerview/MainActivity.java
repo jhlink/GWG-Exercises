@@ -24,8 +24,8 @@ public class MainActivity extends AppCompatActivity {
 
     private static final int NUM_LIST_ITEMS = 100;
 
-    GreenAdapter mAdapter;
-    RecyclerView mNumbersList;
+    private GreenAdapter mAdapter;
+    private RecyclerView mNumbersList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
