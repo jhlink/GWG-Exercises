@@ -55,6 +55,7 @@ public class GreenAdapter extends RecyclerView.Adapter<GreenAdapter.NumberViewHo
         mNumberItems = numberOfItems;
         viewHolderCount = 0;
     }
+
     /**
      *
      * This gets called when each new ViewHolder is created. This happens when the RecyclerView
@@ -77,12 +78,12 @@ public class GreenAdapter extends RecyclerView.Adapter<GreenAdapter.NumberViewHo
         View view = inflater.inflate(layoutIdForListItem, viewGroup, shouldAttachToParentImmediately);
         NumberViewHolder viewHolder = new NumberViewHolder(view);
 
-        // TODO (12) Set the text of viewHolderIndex to "ViewHolder index: " + viewHolderCount
+        viewHolder.viewHolderIndexView.setText("ViewHolder index; " + viewHolderCount);
+        int bgdColor = ColorUtils.getViewHolderBackgroundColorFromInstance(context, viewHolderCount);
+        viewHolder.itemView.setBackgroundColor(bgdColor);
 
-        // TODO (13) Use ColorUtils.getViewHolderBackgroundColorFromInstance and pass in a Context and the viewHolderCount
-        // TODO (14) Set the background color of viewHolder.itemView with the color from above
-
-        // TODO (15) Increment viewHolderCount and log its value
+        viewHolderCount++;
+        Log.v(TAG + "/views", "#: " + viewHolderCount) ;
 
         return viewHolder;
     }
@@ -127,6 +128,7 @@ public class GreenAdapter extends RecyclerView.Adapter<GreenAdapter.NumberViewHo
          * Constructor for our ViewHolder. Within this constructor, we get a reference to our
          * TextViews and set an onClickListener to listen for clicks. Those will be handled in the
          * onClick method below.
+         *
          * @param itemView The View that you inflated in
          *                 {@link GreenAdapter#onCreateViewHolder(ViewGroup, int)}
          */
@@ -134,13 +136,13 @@ public class GreenAdapter extends RecyclerView.Adapter<GreenAdapter.NumberViewHo
             super(itemView);
 
             listItemNumberView = (TextView) itemView.findViewById(R.id.tv_item_number);
-
             viewHolderIndexView = (TextView) itemView.findViewById(R.id.tv_view_holder_instance);
         }
 
         /**
          * A method we wrote for convenience. This method will take an integer as input and
          * use that integer to display the appropriate text within a list item.
+         *
          * @param listIndex Position of the item in the list
          */
         void bind(int listIndex) {
