@@ -108,9 +108,7 @@ public class MainActivity extends AppCompatActivity {
             if (githubSearchResults != null && !githubSearchResults.equals("")) {
                 mSearchResultsTextView.setText(githubSearchResults);
                 showJsonDataView();
-            }
-
-            if (githubSearchResults == null) {
+            } else if (githubSearchResults == null) {
                 showErrorMessage();
             }
 
