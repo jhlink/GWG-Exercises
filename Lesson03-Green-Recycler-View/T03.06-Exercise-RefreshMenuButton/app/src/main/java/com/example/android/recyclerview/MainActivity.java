@@ -69,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
         mNumbersList.setAdapter(mAdapter);
     }
 
+
     // TODO (2) Create a menu resource in res/menu/ called main.xml
     // TODO (3) Add one item to the menu with an ID of action_refresh
     // TODO (4) Set the title of the menu item to "Refresh" using strings.xml
