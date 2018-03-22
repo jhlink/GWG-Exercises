@@ -17,6 +17,7 @@ package com.example.android.recyclerview;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +36,8 @@ import android.widget.TextView;
  * contents are green.
  */
 public class GreenAdapter extends RecyclerView.Adapter<GreenAdapter.NumberViewHolder>{
+
+    private static final String Tag = GreenAdapter.class.getSimpleName();
 
     private int mNumberItems;
 
@@ -57,6 +60,7 @@ public class GreenAdapter extends RecyclerView.Adapter<GreenAdapter.NumberViewHo
 
     @Override
     public void onBindViewHolder(NumberViewHolder holder, int position) {
+        Log.d(Tag, "#" + position);
         holder.bind(position);
     }
 
