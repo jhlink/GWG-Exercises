@@ -23,6 +23,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 /**
  * We couldn't come up with a good name for this class. Then, we realized
  * that this lesson is about RecyclerView.
@@ -119,7 +121,7 @@ public class GreenAdapter extends RecyclerView.Adapter<GreenAdapter.NumberViewHo
 
         // Will display the position in the list, ie 0 through getItemCount() - 1
         TextView listItemNumberView;
-        // TODO (10) Add a TextView variable to display the ViewHolder index
+        TextView viewHolderIndexView;
 
         /**
          * Constructor for our ViewHolder. Within this constructor, we get a reference to our
@@ -133,7 +135,7 @@ public class GreenAdapter extends RecyclerView.Adapter<GreenAdapter.NumberViewHo
 
             listItemNumberView = (TextView) itemView.findViewById(R.id.tv_item_number);
 
-            // TODO (11) Use itemView.findViewById to get a reference to tv_view_holder_instance
+            viewHolderIndexView = (TextView) itemView.findViewById(R.id.tv_view_holder_instance);
         }
 
         /**
