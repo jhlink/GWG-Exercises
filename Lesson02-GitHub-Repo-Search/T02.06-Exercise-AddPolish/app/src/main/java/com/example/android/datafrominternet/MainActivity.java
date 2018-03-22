@@ -25,6 +25,8 @@ import android.widget.TextView;
 
 import com.example.android.datafrominternet.utilities.NetworkUtils;
 
+import org.w3c.dom.Text;
+
 import java.io.IOException;
 import java.net.URL;
 
@@ -36,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView mSearchResultsTextView;
 
-    // TODO (12) Create a variable to store a reference to the error message TextView
+    private TextView mErrorMessageTextView;
 
     // TODO (24) Create a ProgressBar variable to store a reference to the ProgressBar
 
@@ -49,8 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
         mUrlDisplayTextView = (TextView) findViewById(R.id.tv_url_display);
         mSearchResultsTextView = (TextView) findViewById(R.id.tv_github_search_results_json);
-
-        // TODO (13) Get a reference to the error TextView using findViewById
+        mErrorMessageTextView = (TextView) findViewById(R.id.tv_error_message_display);
 
         // TODO (25) Get a reference to the ProgressBar using findViewById
     }
