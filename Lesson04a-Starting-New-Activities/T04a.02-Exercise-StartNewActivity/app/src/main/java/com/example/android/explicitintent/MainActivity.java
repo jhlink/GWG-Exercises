@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
                 Class destinationActivity = ChildActivity.class;
 
                 // COMP (2) Create an Intent to start ChildActivity
-                Intent startChildActivity = new Intent().setClass(context, destinationActivity);
+                Intent startChildActivity = new Intent(context, destinationActivity);
 
                 // COMP (3) Replace the Toast with code to start ChildActivity
                 String message = "Button clicked!";
