@@ -155,8 +155,8 @@ public class MainActivity extends AppCompatActivity {
         String titleOfChooserWindow = "Sharing is Caring :D";
 
         // COMP (4) Use ShareCompat.IntentBuilder to build the Intent and start the chooser
-        ShareCompat.IntentBuilder intentBuilder = new ShareCompat.IntentBuilder();
-        intentBuilder.setType(mimeType)
+        ShareCompat.IntentBuilder.from(this)
+                .setType(mimeType)
                 .setChooserTitle(titleOfChooserWindow)
                 .setText(inputText);
     }
