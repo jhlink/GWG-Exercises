@@ -16,6 +16,7 @@
 package com.example.android.explicitintent;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -26,12 +27,15 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final String TOAST_MESSAGE = "com.example.explicitintent.MESSAGE";
+
     /* Fields that will store our EditText and Button */
     private EditText mNameEntry;
     private Button mDoSomethingCoolButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -61,14 +65,16 @@ public class MainActivity extends AppCompatActivity {
                  */
                 Context context = MainActivity.this;
 
-                // TODO (1) Store ChildActivity.class in a Class object called destinationActivity
+                // COMP (1) Store ChildActivity.class in a Class object called destinationActivity
+                Class destinationActivity = ChildActivity.class;
 
-                // TODO (2) Create an Intent to start ChildActivity
+                // COMP (2) Create an Intent to start ChildActivity
+                Intent startChildActivity = new Intent().setClass(context, destinationActivity);
 
-                // TODO (3) Replace the Toast with code to start ChildActivity
-                String message = "Button clicked!\nTODO: Start a new Activity and pass some data.";
-                Toast.makeText(context, message, Toast.LENGTH_LONG).show();
-
+                // COMP (3) Replace the Toast with code to start ChildActivity
+                String message = "Button clicked!";
+                startChildActivity.putExtra(TOAST_MESSAGE, message);
+                startActivity(startChildActivity);
             }
         });
     }

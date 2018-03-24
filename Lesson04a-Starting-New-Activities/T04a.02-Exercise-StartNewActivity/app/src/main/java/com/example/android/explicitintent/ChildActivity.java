@@ -15,6 +15,7 @@
  */
 package com.example.android.explicitintent;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
@@ -26,10 +27,13 @@ public class ChildActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Intent buttonClickedIntent = getIntent();
+        String messageToDisplay = buttonClickedIntent.getStringExtra(MainActivity.TOAST_MESSAGE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_child);
 
         /* Typical usage of findViewById... */
         mDisplayText = (TextView) findViewById(R.id.tv_display);
+        mDisplayText.setText(messageToDisplay);
     }
 }
