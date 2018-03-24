@@ -144,16 +144,16 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    // TODO (1) Create a void method called shareText that accepts a String as a parameter
+    // COMP (1) Create a void method called shareText that accepts a String as a parameter
     // Do steps 2 - 4 within the shareText method
     public void shareText(String inputText) {
-        // TODO (2) Create a String variable called mimeType and set it to "text/plain"
+        // COMP (2) Create a String variable called mimeType and set it to "text/plain"
         String mimeType = "text/plain";
 
-        // TODO (3) Create a title for the chooser window that will pop up
+        // COMP (3) Create a title for the chooser window that will pop up
         String titleOfChooserWindow = "Sharing is Caring :D";
 
-        // TODO (4) Use ShareCompat.IntentBuilder to build the Intent and start the chooser
+        // COMP (4) Use ShareCompat.IntentBuilder to build the Intent and start the chooser
         ShareCompat.IntentBuilder intentBuilder = new ShareCompat.IntentBuilder();
         intentBuilder.setType(mimeType)
                 .setChooserTitle(titleOfChooserWindow)
