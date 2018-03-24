@@ -37,10 +37,10 @@ public class ChildActivity extends AppCompatActivity {
         Intent startThisActivityIntent = getIntent();
 
         // COMP (4) Create an if statement to check if this Intent has the extra we passed from MainActivity
-        if (startThisActivityIntent.hasExtra("UserNameEntry")) {
+        if (startThisActivityIntent.hasExtra(Intent.EXTRA_TEXT)) {
             // COMP (5) If the Intent contains the correct extra, retrieve the text
             // COMP (6) If the Intent contains the correct extra, use it to set the TextView text
-            String receivedText = startThisActivityIntent.getStringExtra("UserNameEntry");
+            String receivedText = startThisActivityIntent.getStringExtra(Intent.EXTRA_TEXT);
             mDisplayText.setText(receivedText);
         }
 

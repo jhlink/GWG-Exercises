@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
 
                 // COMP (2) Use the putExtra method to put the String from the EditText in the
                 // Intent
-                startChildActivityIntent.putExtra("UserNameEntry", inputText);
+                startChildActivityIntent.putExtra(Intent.EXTRA_TEXT, inputText);
 
                 /*
                  * Once the Intent has been created, we can use Activity's method, "startActivity"
