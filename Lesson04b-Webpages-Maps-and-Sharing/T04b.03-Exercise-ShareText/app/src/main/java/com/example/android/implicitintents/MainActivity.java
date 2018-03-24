@@ -67,10 +67,11 @@ public class MainActivity extends AppCompatActivity {
      * @param v Button that was clicked.
      */
     public void onClickShareTextButton(View v) {
-        // TODO (5) Specify a String you'd like to share
+        // COMP (5) Specify a String you'd like to share
+        String textThatYouWantToShare = "Hello";
 
-        // TODO (6) Replace the Toast with shareText, passing in the String from step 5
-        Toast.makeText(this, "TODO: Share text when this is clicked", Toast.LENGTH_LONG).show();
+        // COMP (6) Replace the Toast with shareText, passing in the String from step 5
+        shareText(textThatYouWantToShare);
     }
 
     /**
