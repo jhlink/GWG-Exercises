@@ -19,6 +19,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -48,12 +49,23 @@ public class MainActivity extends AppCompatActivity {
      * @param v Button that was clicked.
      */
     public void onClickOpenAddressButton(View v) {
-        // TODO (5) Store an address in a String
+        // COMP (5) Store an address in a String
+        String addressString = "Chicago, IL";
 
-        // TODO (6) Use Uri.Builder with the appropriate scheme and query to form the Uri for the address
+        // COMP (6) Use Uri.Builder with the appropriate scheme and query to form the Uri for the
+        // address
 
-        // TODO (7) Replace the Toast with a call to showMap, passing in the Uri from the previous step
-        Toast.makeText(this, "TODO: Open a map when this button is clicked", Toast.LENGTH_SHORT).show();
+        // THIS IS A HACK FOR REASONS DEFINED HERE.
+        // https://stackoverflow.com/questions/21689848/build-uri-of-the-format-xy#answer-37437481
+        Uri.Builder builder = new Uri.Builder();
+        builder.scheme("geo")
+                .encodedOpaquePart("0,0?q=" + Uri.encode(addressString));
+        Uri addressUri = builder.build();
+
+        // COMP (7) Replace the Toast with a call to showMap, passing in the Uri from the previous
+        // step
+        showMap(addressUri);
+
     }
 
     /**
@@ -111,9 +123,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
     // COMP (1) Create a method called showMap with a Uri as the single parameter
     public void showMap(Uri someURIMap) {
+
+            Log.v("uri", someURIMap.toString());
     // Do steps 2 - 4 within the showMap method
         // COMP (2) Create an Intent with action type, Intent.ACTION_VIEW
         Intent startMapActionIntent = new Intent(Intent.ACTION_VIEW);
