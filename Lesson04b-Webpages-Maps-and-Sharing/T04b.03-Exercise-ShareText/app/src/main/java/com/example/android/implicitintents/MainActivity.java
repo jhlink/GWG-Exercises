@@ -157,7 +157,6 @@ public class MainActivity extends AppCompatActivity {
         ShareCompat.IntentBuilder intentBuilder = new ShareCompat.IntentBuilder();
         intentBuilder.setType(mimeType)
                 .setChooserTitle(titleOfChooserWindow)
-                .setText(inputText)
-                .startChooser();
+                .setText(inputText);
     }
 }
