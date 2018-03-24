@@ -76,5 +76,5 @@ public class MainActivity extends AppCompatActivity {
 // COMP (5) Make the text size a little larger
 
 // Do steps 6 & 7 in ChildActivity.java
-// TODO (6) Create a TextView field to display your message
-// TODO (7) Get a reference to your TextView in Java
+// COMP (6) Create a TextView field to display your message
+// COMP (7) Get a reference to your TextView in Java
