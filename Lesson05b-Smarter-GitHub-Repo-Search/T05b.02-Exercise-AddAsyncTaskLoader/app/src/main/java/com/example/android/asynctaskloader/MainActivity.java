@@ -15,9 +15,13 @@
  */
 package com.example.android.asynctaskloader;
 
-import android.os.AsyncTask;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.app.LoaderManager.LoaderCallbacks;
+import android.support.v4.content.AsyncTaskLoader;
+import android.support.v4.content.Loader;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -30,17 +34,17 @@ import com.example.android.asynctaskloader.utilities.NetworkUtils;
 import java.io.IOException;
 import java.net.URL;
 
-// TODO (1) implement LoaderManager.LoaderCallbacks<String> on MainActivity
-public class MainActivity extends AppCompatActivity {
+// COMP (1) implement LoaderManager.LoaderCallbacks<String> on MainActivity
+public class MainActivity extends AppCompatActivity implements LoaderManager
+        .LoaderCallbacks<String> {
 
     /* A constant to save and restore the URL that is being displayed */
     private static final String SEARCH_QUERY_URL_EXTRA = "query";
 
-    // TODO (28) Remove the key for storing the search results JSON
-    /* A constant to save and restore the JSON that is being displayed */
-    private static final String SEARCH_RESULTS_RAW_JSON = "results";
+    // COMP (28) Remove the key for storing the search results JSON
 
-    // TODO (2) Create a constant int to uniquely identify your loader. Call it GITHUB_SEARCH_LOADER
+    // COMP (2) Create a constant int to uniquely identify your loader. Call it GITHUB_SEARCH_LOADER
+    private static final int GITHUB_SEARCH_LOADER = 22;
 
     private EditText mSearchBoxEditText;
 
@@ -68,15 +72,17 @@ public class MainActivity extends AppCompatActivity {
         if (savedInstanceState != null) {
             String queryUrl = savedInstanceState.getString(SEARCH_QUERY_URL_EXTRA);
 
-            // TODO (26) Remove the code that retrieves the JSON
-            String rawJsonSearchResults = savedInstanceState.getString(SEARCH_RESULTS_RAW_JSON);
+            // COMP (26) Remove the code that retrieves the JSON
 
-            mUrlDisplayTextView.setText(queryUrl);
-            // TODO (25) Remove the code that displays the JSON
-            mSearchResultsTextView.setText(rawJsonSearchResults);
+            // COMP (25) Remove the code that displays the JSON
         }
 
-        // TODO (24) Initialize the loader with GITHUB_SEARCH_LOADER as the ID, null for the bundle, and this for the context
+        // COMP (24) Initialize the loader with GITHUB_SEARCH_LOADER as the ID, null for the bundle,
+        // and this for the context
+
+        LoaderManager daBossLoaderManager = getSupportLoaderManager();
+        daBossLoaderManager.initLoader(GITHUB_SEARCH_LOADER, null, this);
+
     }
 
     /**
@@ -87,20 +93,36 @@ public class MainActivity extends AppCompatActivity {
     private void makeGithubSearchQuery() {
         String githubQuery = mSearchBoxEditText.getText().toString();
 
-        // TODO (17) If no search was entered, indicate that there isn't anything to search for and return
+        // COMP (17) If no search was entered, indicate that there isn't anything to search for and
+        // return
+        if (githubQuery.isEmpty() || githubQuery == "") {
+            mUrlDisplayTextView.setText("Nothing to see here!");
+            return;
+        }
 
         URL githubSearchUrl = NetworkUtils.buildUrl(githubQuery);
         mUrlDisplayTextView.setText(githubSearchUrl.toString());
 
-        // TODO (18) Remove the call to execute the AsyncTask
-        new GithubQueryTask().execute(githubSearchUrl);
+        // COMP (19) Create a bundle called queryBundle
+        Bundle queryBundle = new Bundle();
 
-        // TODO (19) Create a bundle called queryBundle
-        // TODO (20) Use putString with SEARCH_QUERY_URL_EXTRA as the key and the String value of the URL as the value
+        // COMP (20) Use putString with SEARCH_QUERY_URL_EXTRA as the key and the String value of
+        // the URL as the value
+        String urlString = githubSearchUrl.toString();
+        queryBundle.putString(SEARCH_QUERY_URL_EXTRA, urlString);
 
-        // TODO (21) Call getSupportLoaderManager and store it in a LoaderManager variable
-        // TODO (22) Get our Loader by calling getLoader and passing the ID we specified
-        // TODO (23) If the Loader was null, initialize it. Else, restart it.
+        // COMP (21) Call getSupportLoaderManager and store it in a LoaderManager variable
+        LoaderManager daBossLoaderManager = getSupportLoaderManager();
+
+        // COMP (22) Get our Loader by calling getLoader and passing the ID we specified
+        Loader<String> githubSearchLoader = daBossLoaderManager.getLoader(GITHUB_SEARCH_LOADER);
+
+        // COMP (23) If the Loader was null, initialize it. Else, restart it.
+        if (githubSearchLoader == null) {
+            daBossLoaderManager.initLoader(GITHUB_SEARCH_LOADER, queryBundle, this);
+        } else {
+            daBossLoaderManager.restartLoader(GITHUB_SEARCH_LOADER, queryBundle, this);
+        }
     }
 
     /**
@@ -131,71 +153,85 @@ public class MainActivity extends AppCompatActivity {
         mErrorMessageDisplay.setVisibility(View.VISIBLE);
     }
 
-    // TODO (3) Override onCreateLoader
+
+    // COMP (3) Override onCreateLoader
+    @Override
+    public Loader<String> onCreateLoader(int id, final Bundle args) {
     // Within onCreateLoader
-        // TODO (4) Return a new AsyncTaskLoader<String> as an anonymous inner class with this as the constructor's parameter
-            // TODO (5) Override onStartLoading
-                // Within onStartLoading
-
-                // TODO (6) If args is null, return.
-
-                // TODO (7) Show the loading indicator
-
-                // TODO (8) Force a load
-                // END - onStartLoading
-
-            // TODO (9) Override loadInBackground
-
+        // COMP (4) Return a new AsyncTaskLoader<String> as an anonymous inner class with this as
+        // the constructor's parameter
+        return new AsyncTaskLoader<String>(this) {
+            // COMP (9) Override loadInBackground
+            @Override
+            public String loadInBackground() {
                 // Within loadInBackground
-                // TODO (10) Get the String for our URL from the bundle passed to onCreateLoader
+                // COMP (10) Get the String for our URL from the bundle passed to onCreateLoader
+                String requestedURL = args.getString(SEARCH_QUERY_URL_EXTRA);
 
-                // TODO (11) If the URL is null or empty, return null
+                // COMP (11) If the URL is null or empty, return null
+                if (requestedURL == null || TextUtils.isEmpty(requestedURL)) {
+                    return null;
+                }
 
-                // TODO (12) Copy the try / catch block from the AsyncTask's doInBackground method
-                // END - loadInBackground
-
-    // TODO (13) Override onLoadFinished
-
-        // Within onLoadFinished
-        // TODO (14) Hide the loading indicator
-
-        // TODO (15) Use the same logic used in onPostExecute to show the data or the error message
-        // END - onLoadFinished
-
-    // TODO (16) Override onLoaderReset as it is part of the interface we implement, but don't do anything in this method
-
-    // TODO (29) Delete the AsyncTask class
-    public class GithubQueryTask extends AsyncTask<URL, Void, String> {
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            mLoadingIndicator.setVisibility(View.VISIBLE);
-        }
-
-        @Override
-        protected String doInBackground(URL... params) {
-            URL searchUrl = params[0];
-            String githubSearchResults = null;
-            try {
-                githubSearchResults = NetworkUtils.getResponseFromHttpUrl(searchUrl);
-            } catch (IOException e) {
-                e.printStackTrace();
+                // COMP (12) Copy the try / catch block from the AsyncTask's doInBackground method
+                String githubSearchResults = null;
+                try {
+                    URL githubSearchURL = new URL(requestedURL);
+                    githubSearchResults = NetworkUtils.getResponseFromHttpUrl(githubSearchURL);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    return null;
+                }
+                return githubSearchResults;
             }
-            return githubSearchResults;
-        }
 
-        @Override
-        protected void onPostExecute(String githubSearchResults) {
-            mLoadingIndicator.setVisibility(View.INVISIBLE);
-            if (githubSearchResults != null && !githubSearchResults.equals("")) {
-                showJsonDataView();
-                mSearchResultsTextView.setText(githubSearchResults);
-            } else {
-                showErrorMessage();
+            // COMP (5) Override onStartLoading
+            @Override
+            protected void onStartLoading() {
+                // Within onStartLoading
+                super.onStartLoading();
+
+                // COMP (6) If args is null, return.
+                if (args == null) {
+                    return;
+                }
+
+                // COMP (7) Show the loading indicator
+                mLoadingIndicator.setVisibility(View.VISIBLE);
+
+                // COMP (8) Force a load
+                forceLoad();
+                // END - onStartLoading
             }
-        }
+        };
     }
+
+    // COMP (13) Override onLoadFinished
+    @Override
+    public void onLoadFinished(Loader<String> loader, String data) {
+        // Within onLoadFinished
+        // COMP (14) Hide the loading indicator
+        mLoadingIndicator.setVisibility(View.INVISIBLE);
+
+        // COMP (15) Use the same logic used in onPostExecute to show the data or the error message
+        if (data != null && !data.equals("")) {
+            showJsonDataView();
+            mSearchResultsTextView.setText(data);
+        } else {
+            showErrorMessage();
+        }
+        // END - onLoadFinished
+    }
+
+    // COMP (16) Override onLoaderReset as it is part of the interface we implement, but don't do
+    // anything in this method
+    @Override
+    public void onLoaderReset(Loader<String> loader) {
+
+    }
+
+
+    // COMP (29) Delete the AsyncTask class
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -220,8 +256,6 @@ public class MainActivity extends AppCompatActivity {
         String queryUrl = mUrlDisplayTextView.getText().toString();
         outState.putString(SEARCH_QUERY_URL_EXTRA, queryUrl);
 
-        // TODO (27) Remove the code that persists the JSON
-        String rawJsonSearchResults = mSearchResultsTextView.getText().toString();
-        outState.putString(SEARCH_RESULTS_RAW_JSON, rawJsonSearchResults);
+        // COMP (27) Remove the code that persists the JSON
     }
 }
