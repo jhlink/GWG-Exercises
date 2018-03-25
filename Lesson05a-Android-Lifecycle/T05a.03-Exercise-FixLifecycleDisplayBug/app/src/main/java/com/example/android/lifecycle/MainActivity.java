@@ -145,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
         super.onStop();
 
         // COMP (2) Add the ON_STOP String to the front of mLifecycleCallbacks
-        mLifecycleCallbacks.add(ON_STOP);
+        mLifecycleCallbacks.add(0, ON_STOP);
 
         logAndAppend(ON_STOP);
     }
@@ -173,7 +173,7 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
 
         // COMP (3) Add the ON_DESTROY String to the front of mLifecycleCallbacks
-        mLifecycleCallbacks.add(ON_DESTROY);
+        mLifecycleCallbacks.add(0, ON_DESTROY);
 
         logAndAppend(ON_DESTROY);
     }
