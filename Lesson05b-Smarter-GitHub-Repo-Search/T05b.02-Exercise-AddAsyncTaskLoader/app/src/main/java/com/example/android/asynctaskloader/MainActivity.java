@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager
 
         // COMP (17) If no search was entered, indicate that there isn't anything to search for and
         // return
-        if (githubQuery.isEmpty() || githubQuery.length() == 0) {
+        if (TextUtils.isEmpty(githubQuery) || githubQuery.length() == 0) {
             mUrlDisplayTextView.setText("Nothing to see here!");
             return;
         }
