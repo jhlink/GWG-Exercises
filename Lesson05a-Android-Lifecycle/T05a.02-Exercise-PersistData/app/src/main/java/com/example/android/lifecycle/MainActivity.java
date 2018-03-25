@@ -150,10 +150,10 @@ public class MainActivity extends AppCompatActivity {
 
         // COMP (2) Override onSaveInstanceState
         @Override
-        public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState){
+        public void onSaveInstanceState(Bundle outState){
             // Do steps 3 - 5 within onSaveInstanceState
             // COMP (3) Call super.onSaveInstanceState
-            super.onSaveInstanceState(outState, outPersistentState);
+            super.onSaveInstanceState(outState);
 
             // COMP (4) Call logAndAppend with the ON_SAVE_INSTANCE_STATE String
             logAndAppend(ON_SAVE_INSTANCE_STATE);
