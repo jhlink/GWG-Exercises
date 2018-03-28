@@ -63,7 +63,12 @@ public class VisualizerActivity
         // TODO (3) Register the listener
     }
 
-    // TODO (2) Override the onSharedPreferenceChanged method and update the show bass preference
+    // COMP (2) Override the onSharedPreferenceChanged method and update the show bass preference
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        boolean showBassBoolean = sharedPreferences.getBoolean(key, true);
+        mVisualizerView.setShowBass(showBassBoolean);
+    }
     // TODO (4) Override onDestroy and unregister the listener
 
     /**
