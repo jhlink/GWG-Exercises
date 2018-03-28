@@ -2,7 +2,7 @@
     <string name="app_name">Visualize</string>
 
     <!-- COMP (4) Add string for Settings -->
-    <string name="app_title">Beatz</string>
+    <string name="action_settings">Beatz</string>
     
     <!-- - - - - - - - - - - - - - - -
           - Used by Preferences  -
