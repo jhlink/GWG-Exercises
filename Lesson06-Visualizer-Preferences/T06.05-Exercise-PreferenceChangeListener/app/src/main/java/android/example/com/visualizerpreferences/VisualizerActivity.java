@@ -60,9 +60,9 @@ public class VisualizerActivity
         mVisualizerView.setShowTreble(true);
         mVisualizerView.setMinSizeScale(1);
         mVisualizerView.setColor(getString(R.string.pref_color_red_value));
-        // TODO (3) Register the listener
+        // COMP (3) Register the listener
 
-        sharedPreferences.registerOnSharedPreferenceChangeListener();
+        sharedPreferences.registerOnSharedPreferenceChangeListener(this);
     }
 
     // COMP (2) Override the onSharedPreferenceChanged method and update the show bass preference
