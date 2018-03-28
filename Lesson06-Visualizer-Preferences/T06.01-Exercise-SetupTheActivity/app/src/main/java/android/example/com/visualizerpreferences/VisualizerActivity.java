@@ -68,6 +68,7 @@ public class VisualizerActivity extends AppCompatActivity {
         switch (itemID) {
             case R.id.action_settings:
                 launch_preferences();
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }
