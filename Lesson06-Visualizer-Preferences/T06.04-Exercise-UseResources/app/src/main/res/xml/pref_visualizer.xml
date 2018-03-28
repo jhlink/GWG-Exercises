@@ -7,8 +7,8 @@
     <CheckBoxPreference
         android:defaultValue="@bool/bass_default"
         android:key="@string/pref_show_bass_key"
-        android:summaryOff="Hidden"
-        android:summaryOn="Shown"
+        android:summaryOff="@string/pref_show_false"
+        android:summaryOn="@string/pref_show_true"
         android:title="@string/pref_show_bass_label" />
 
 </PreferenceScreen>
