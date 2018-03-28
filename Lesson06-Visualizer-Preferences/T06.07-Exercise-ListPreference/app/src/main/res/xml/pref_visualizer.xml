@@ -28,8 +28,8 @@
     <ListPreference
         android:defaultValue="<Default value>"
         android:entries="<Array with all option labels"
-        android:entryValues="<Array with all values"
-        android:key="<String Key>"
-        android:title="<Label for the entire preferences>" />
+        android:entryValues="<Array with all values>"
+        android:key="@string/pref_color_list_key"
+        android:title="@string/pref_color_list_label" />
 
 </PreferenceScreen>
