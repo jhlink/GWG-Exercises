@@ -2,7 +2,7 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- COMP (2) Create a res->bools.xml file and create a boolean for this default value -->
-    <!-- TODO (3) Update these values to be values from resource files and not hard coded -->
+    <!-- COMP (3) Update these values to be values from resource files and not hard coded -->
 
     <CheckBoxPreference
         android:defaultValue="@bool/bass_default"
