@@ -57,7 +57,7 @@ public class VisualizerActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflator = getMenuInflater();
-        inflator.inflate(R.id.action_settings, menu);
+        inflator.inflate(R.menu.visualizer_menu, menu);
 
         return super.onCreateOptionsMenu(menu);
     }
