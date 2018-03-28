@@ -55,7 +55,7 @@ public class SettingsActivity extends AppCompatActivity {
     // COMP (5) In SettingsFragment's onCreatePreferences method add the preference file using the
     // addPreferencesFromResource method
 
-    // TODO (7) Set the root layout of activity_settings to our newly created SettingsFragment
+    // COMP (7) Set the root layout of activity_settings to our newly created SettingsFragment
     // and remove the padding.
     // [HINT] Use a <fragment> element in xml
 }
