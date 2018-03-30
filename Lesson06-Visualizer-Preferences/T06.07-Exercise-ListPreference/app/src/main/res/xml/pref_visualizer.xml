@@ -26,8 +26,8 @@
     <!-- COMP (1) Add a list preference -->
 
     <ListPreference
-        android:defaultValue="<Default value>"
-        android:entries="<Array with all option labels"
+        android:defaultValue="@string/pref_color_red_value"
+        android:entries="<Array with all option labels>"
         android:entryValues="<Array with all values>"
         android:key="@string/pref_color_list_key"
         android:title="@string/pref_color_list_label" />
