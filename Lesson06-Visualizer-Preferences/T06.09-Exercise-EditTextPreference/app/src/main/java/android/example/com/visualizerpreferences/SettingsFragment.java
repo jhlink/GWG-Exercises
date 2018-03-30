@@ -112,7 +112,7 @@ public class SettingsFragment extends PreferenceFragmentCompat
     //      range (0, 3]. onPreferenceChange is called before onSharedPreferenceChange.
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        Toast errorMsg = Toast.makeText(getContext(), "Please put a number from 0 to 3", Toast.LENGTH_SHORT);
+        Toast errorMsg = Toast.makeText(getContext(), "Please put a number from 0.1 to 3", Toast.LENGTH_SHORT);
 
         String sizeKey = getString(R.string.pref_size_key);
         boolean updatePreference = true;
