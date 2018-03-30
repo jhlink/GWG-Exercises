@@ -27,12 +27,14 @@ import android.support.v7.preference.PreferenceFragmentCompat;
 import android.support.v7.preference.PreferenceScreen;
 import android.widget.Toast;
 
-// TODO (1) Implement OnSharedPreferenceChangeListener
-public class SettingsFragment extends PreferenceFragmentCompat {
+import java.util.List;
+
+// COMP (1) Implement OnSharedPreferenceChangeListener
+public class SettingsFragment extends PreferenceFragmentCompat
+    implements OnSharedPreferenceChangeListener {
 
     @Override
     public void onCreatePreferences(Bundle bundle, String s) {
-
         // Add visualizer preferences, defined in the XML file in res->xml->pref_visualizer
         addPreferencesFromResource(R.xml.pref_visualizer);
 
@@ -44,10 +46,22 @@ public class SettingsFragment extends PreferenceFragmentCompat {
     // TODO (4) Override onSharedPreferenceChanged and, if it is not a checkbox preference,
     // call setPreferenceSummary on the changed preference
 
-    // TODO (2) Create a setPreferenceSummary which takes a Preference and String value as parameters.
+    // COMP (2) Create a setPreferenceSummary which takes a Preference and String value as
+    // parameters.
     // This method should check if the preference is a ListPreference and, if so, find the label
     // associated with the value. You can do this by using the findIndexOfValue and getEntries methods
     // of Preference.
+    public void setPreferenceSummary(Preference inputPref, String value) {
+        if (inputPref instanceof ListPreference) {
+           ListPreference lpref = (ListPreference) inputPref;
+           int prefIndex = lpref.findIndexOfValue(value);
+
+           if (prefIndex >= 0) {
+               lpref.setSummary(lpref.getEntries()[prefIndex]);
+           }
+
+        }
+    }
 
     // TODO (5) Register and unregister the OnSharedPreferenceChange listener (this class) in
     // onCreate and onDestroy respectively.
