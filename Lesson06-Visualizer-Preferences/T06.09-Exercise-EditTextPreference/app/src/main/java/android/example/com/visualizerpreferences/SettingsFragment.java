@@ -28,8 +28,9 @@ import android.support.v7.preference.PreferenceScreen;
 import android.widget.Toast;
 
 
-public class SettingsFragment extends PreferenceFragmentCompat implements
-        OnSharedPreferenceChangeListener {
+public class SettingsFragment extends PreferenceFragmentCompat
+        implements SharedPreferences.OnSharedPreferenceChangeListener,
+            Preference.OnPreferenceChangeListener {
 
     @Override
     public void onCreatePreferences(Bundle bundle, String s) {
@@ -51,6 +52,9 @@ public class SettingsFragment extends PreferenceFragmentCompat implements
                 setPreferenceSummary(p, value);
             }
         }
+
+        Preference preference = findPreference(getString(R.string.pref_size_key));
+        preference.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -101,5 +105,30 @@ public class SettingsFragment extends PreferenceFragmentCompat implements
         super.onDestroy();
         getPreferenceScreen().getSharedPreferences()
                 .unregisterOnSharedPreferenceChangeListener(this);
+    }
+
+    //  Description: So what we're doing here is using onPreferenceChange for error handling
+    //      in case the user decides to input a preference that is a non-integer or outside the
+    //      range (0, 3]. onPreferenceChange is called before onSharedPreferenceChange.
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+        Toast errorMsg = Toast.makeText(getContext(), "Please put a number from 0 to 3", Toast.LENGTH_SHORT);
+
+        String sizeKey = getString(R.string.pref_size_key);
+        boolean updatePreference = true;
+        if (preference.getKey().equals(sizeKey)) {
+            String stringSize = newValue.toString();
+            try {
+                Float userInputValue = Float.parseFloat(stringSize);
+                if (userInputValue <= 0 || userInputValue > 3) {
+                    errorMsg.show();
+                    updatePreference = false;
+                }
+            } catch (Exception e) {
+                errorMsg.show();
+                updatePreference = false;
+            }
+        }
+        return updatePreference;
     }
 }
