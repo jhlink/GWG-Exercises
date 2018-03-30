@@ -26,7 +26,7 @@
     <string name="pref_show_false">Hidden</string>
 
     <!-- COMP (2) Add string values for the list preference -->
-    <string name="pref_color_list_key">select_colors</string>
+    <string name="pref_color_list_key" translatable="false">select_colors</string>
     <string name="pref_color_list_label">Select Colors</string>
 
     <!-- COMP (3) Add a res->values->arrays.xml file which contains two arrays, one for
