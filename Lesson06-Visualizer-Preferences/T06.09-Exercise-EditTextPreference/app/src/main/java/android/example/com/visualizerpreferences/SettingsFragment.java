@@ -124,7 +124,7 @@ public class SettingsFragment extends PreferenceFragmentCompat
                     errorMsg.show();
                     updatePreference = false;
                 }
-            } catch (Exception e) {
+            } catch (NumberFormatException e) {
                 errorMsg.show();
                 updatePreference = false;
             }
