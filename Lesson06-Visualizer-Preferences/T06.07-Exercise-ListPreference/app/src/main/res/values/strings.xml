@@ -29,7 +29,7 @@
     <string name="pref_color_list_key">select_colors</string>
     <string name="pref_color_list_label">Select Colors</string>
 
-    <!-- TODO (3) Add a res->values->arrays.xml file which contains two arrays, one for
+    <!-- COMP (3) Add a res->values->arrays.xml file which contains two arrays, one for
         labels and one for values. The arrays should contain strings found in this file-->
 
     <string name="pref_color_label_red">Red</string>
