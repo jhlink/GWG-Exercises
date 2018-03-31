@@ -135,10 +135,17 @@ public class MainActivity extends AppCompatActivity {
         return mDb.insert(WaitlistContract.WaitlistEntry.TABLE_NAME, null, cv);
     }
 
+    // COMP (1) Create a new function called removeGuest that takes long id as input and returns a
+    // boolean
+    private boolean removeGuest(long id) {
+        // COMP (2) Inside, call mDb.delete to pass in the TABLE_NAME and the condition that
+        // WaitlistEntry._ID equals id
+        int result = mDb.delete(WaitlistContract.WaitlistEntry.TABLE_NAME,
+                WaitlistContract.WaitlistEntry._ID + "=" + id, null);
 
-    // TODO (1) Create a new function called removeGuest that takes long id as input and returns a boolean
+        return result > 0;
+    }
 
-    // TODO (2) Inside, call mDb.delete to pass in the TABLE_NAME and the condition that WaitlistEntry._ID equals id
 
 
 }
