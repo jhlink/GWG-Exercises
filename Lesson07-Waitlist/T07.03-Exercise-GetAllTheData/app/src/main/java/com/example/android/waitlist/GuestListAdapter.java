@@ -11,17 +11,24 @@ import android.widget.TextView;
 public class GuestListAdapter extends RecyclerView.Adapter<GuestListAdapter.GuestViewHolder> {
 
     private Context mContext;
-    // TODO (8) Add a new local variable mCount to store the count of items to be displayed in the recycler view
+
+    // COMP (8) Add a new local variable mCount to store the count of items to be displayed in the
+    // recycler view
+    private int mCount;
 
     /**
      * Constructor using the context and the db cursor
      *
      * @param context the calling context/activity
+     * @param count the count of items displayed in recycler view
      */
-    // TODO (9) Update the Adapter constructor to accept an integer for the count along with the context
-    public GuestListAdapter(Context context) {
+    // COMP (9) Update the Adapter constructor to accept an integer for the count along with the
+    // context
+    public GuestListAdapter(Context context, int count) {
         this.mContext = context;
-        // TODO (10) Set the local mCount to be equal to count
+
+        // COMP (10) Set the local mCount to be equal to count
+        this.mCount = count;
     }
 
     @Override
