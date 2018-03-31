@@ -85,10 +85,7 @@ public class MainActivity extends AppCompatActivity {
         // TODO (19) call mAdapter.swapCursor to update the cursor by passing in getAllGuests()
 
         // TODO (20) To make the UI look nice, call .getText().clear() on both EditTexts, also call clearFocus() on mNewPartySizeEditText
-
     }
-
-
 
     /**
      * Query the mDb and get all guests from the waitlist table
@@ -107,16 +104,24 @@ public class MainActivity extends AppCompatActivity {
         );
     }
 
-    // TODO (4) Create a new addGuest method
+    // COMP (4) Create a new addGuest method
+    private void addGuest(String guestName, int partySize) {
+        // COMP (5) Inside, create a ContentValues instance to pass the values onto the insert query
+        ContentValues newGuest = new ContentValues();
 
-    // TODO (5) Inside, create a ContentValues instance to pass the values onto the insert query
+        // COMP (6) call put to insert the name value with the key COLUMN_GUEST_NAME
+        String guestNameKey = WaitlistContract.WaitlistEntry.COLUMN_GUEST_NAME;
+        newGuest.put(guestNameKey, guestName);
 
-    // TODO (6) call put to insert the name value with the key COLUMN_GUEST_NAME
+        // COMP (7) call put to insert the party size value with the key COLUMN_PARTY_SIZE
+        String partySizeKey = WaitlistContract.WaitlistEntry.COLUMN_PARTY_SIZE;
+        newGuest.put(partySizeKey, partySize);
 
-    // TODO (7) call put to insert the party size value with the key COLUMN_PARTY_SIZE
-
-    // TODO (8) call insert to run an insert query on TABLE_NAME with the ContentValues created
-
-
-
+        // COMP (8) call insert to run an insert query on TABLE_NAME with the ContentValues created
+        mDb.insert(
+                WaitlistContract.WaitlistEntry.TABLE_NAME,
+                null,
+                newGuest
+        );
+    }
 }
