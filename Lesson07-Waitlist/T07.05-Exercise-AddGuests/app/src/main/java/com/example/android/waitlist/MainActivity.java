@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -14,6 +15,8 @@ import android.widget.EditText;
 import com.example.android.waitlist.data.TestUtil;
 import com.example.android.waitlist.data.WaitlistContract;
 import com.example.android.waitlist.data.WaitlistDbHelper;
+
+import org.w3c.dom.Text;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -25,7 +28,8 @@ public class MainActivity extends AppCompatActivity {
     private EditText mNewGuestNameEditText;
     private EditText mNewPartySizeEditText;
 
-    // TODO (13) Create a constant string LOG_TAG that is equal to the class.getSimpleName()
+    // COMP (13) Create a constant string LOG_TAG that is equal to the class.getSimpleName()
+    private final static String LOG_TAG = MainActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,15 +76,29 @@ public class MainActivity extends AppCompatActivity {
      */
     public void addToWaitlist(View view) {
 
-        // TODO (9) First thing, check if any of the EditTexts are empty, return if so
+        // COMP (9) First thing, check if any of the EditTexts are empty, return if so
+        String guestNameText = mNewGuestNameEditText.getText().toString();
+        String partySizeText = mNewPartySizeEditText.getText().toString();
 
-        // TODO (10) Create an integer to store the party size and initialize to 1
+        if (TextUtils.isEmpty(guestNameText) || TextUtils.isEmpty(partySizeText)) {
+            return;
+        }
 
-        // TODO (11) Use Integer.parseInt to parse mNewPartySizeEditText.getText to an integer
+        // COMP (10) Create an integer to store the party size and initialize to 1
+        int initPartySize = 1;
 
-        // TODO (12) Make sure you surround the Integer.parseInt with a try catch and log any exception
+        // COMP (11) Use Integer.parseInt to parse mNewPartySizeEditText.getText to an integer
+        // COMP (12) Make sure you surround the Integer.parseInt with a try catch and log any
+        // exception
+        try {
+            initPartySize = Integer.parseInt(mNewPartySizeEditText.getText().toString());
+        } catch (Exception e) {
+            Log.d(LOG_TAG, String.valueOf(e));
+            return;
+        }
 
-        // TODO (14) call addNewGuest with the guest name and party size
+        // COMP (14) call addNewGuest with the guest name and party size
+        addGuest(guestNameText, initPartySize);
 
         // TODO (19) call mAdapter.swapCursor to update the cursor by passing in getAllGuests()
 
