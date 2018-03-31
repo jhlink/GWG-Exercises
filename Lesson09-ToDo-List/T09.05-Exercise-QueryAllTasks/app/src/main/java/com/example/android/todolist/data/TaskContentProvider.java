@@ -17,16 +17,18 @@
 package com.example.android.todolist.data;
 
 import android.content.ContentProvider;
+import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.UriMatcher;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 
-import static com.example.android.todolist.data.TaskContract.TaskEntry.TABLE_NAME;
+import static com.example.android.todolist.data.TaskContract.TaskEntry.*;
 
 // Verify that TaskContentProvider extends from ContentProvider and implements required methods
 public class TaskContentProvider extends ContentProvider {
@@ -96,7 +98,7 @@ public class TaskContentProvider extends ContentProvider {
                 // Inserting values into tasks table
                 long id = db.insert(TABLE_NAME, null, values);
                 if ( id > 0 ) {
-                    returnUri = ContentUris.withAppendedId(TaskContract.TaskEntry.CONTENT_URI, id);
+                    returnUri = ContentUris.withAppendedId(CONTENT_URI, id);
                 } else {
                     throw new android.database.SQLException("Failed to insert row into " + uri);
                 }
@@ -120,17 +122,36 @@ public class TaskContentProvider extends ContentProvider {
     public Cursor query(@NonNull Uri uri, String[] projection, String selection,
                         String[] selectionArgs, String sortOrder) {
 
-        // TODO (1) Get access to underlying database (read-only for query)
+        // COMP (1) Get access to underlying database (read-only for query)
+        SQLiteDatabase db = mTaskDbHelper.getReadableDatabase();
 
-        // TODO (2) Write URI match code and set a variable to return a Cursor
+        // COMP (2) Write URI match code and set a variable to return a Cursor
+        int match = sUriMatcher.match(uri);
 
-        // TODO (3) Query for the tasks directory and write a default case
 
-        // TODO (4) Set a notification URI on the Cursor and return that Cursor
+        // COMP (3) Query for the tasks directory and write a default case
 
-        throw new UnsupportedOperationException("Not yet implemented");
+        Cursor cursor;
+        switch (match) {
+            case TASKS:
+                cursor = db.query(TABLE_NAME,
+                        projection,
+                        selection,
+                        selectionArgs,
+                        null,
+                        null,
+                        sortOrder);
+                break;
+
+            default:
+                throw new UnsupportedOperationException("Failed to retrieve query: " + uri.toString());
+        }
+
+        // COMP (4) Set a notification URI on the Cursor and return that Cursor
+        ContentResolver contentResolver = getContext().getContentResolver();
+        cursor.setNotificationUri(contentResolver, uri);
+        return cursor;
     }
-
 
     @Override
     public int delete(@NonNull Uri uri, String selection, String[] selectionArgs) {
