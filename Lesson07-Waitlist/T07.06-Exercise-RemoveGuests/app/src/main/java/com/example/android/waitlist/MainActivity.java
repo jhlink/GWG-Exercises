@@ -39,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
         // Set layout for the RecyclerView, because it's a list we are using the linear layout
         waitlistRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-
         // Create a DB helper (this will create the DB if run for the first time)
         WaitlistDbHelper dbHelper = new WaitlistDbHelper(this);
 
@@ -56,19 +55,35 @@ public class MainActivity extends AppCompatActivity {
         // Link the adapter to the RecyclerView
         waitlistRecyclerView.setAdapter(mAdapter);
 
+        //COMP (3) Create a new ItemTouchHelper with a SimpleCallback that handles both LEFT and
+        // RIGHT swipe directions
+        ItemTouchHelper swipeTouchHelper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback
+                (0,
+                ItemTouchHelper.LEFT |
+                ItemTouchHelper.RIGHT) {
 
-        //TODO (3) Create a new ItemTouchHelper with a SimpleCallback that handles both LEFT and RIGHT swipe directions
+            // COMP (4) Override onMove and simply return false inside
+            @Override
+            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+                return false;
+            }
 
-        // TODO (4) Override onMove and simply return false inside
+            // COMP (5) Override onSwiped
+            @Override
+            public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+                // COMP (8) Inside, get the viewHolder's itemView's tag and store in a long
+                // variable id
+                long variableId = (long) viewHolder.itemView.getTag();
 
-        // TODO (5) Override onSwiped
+                // COMP (9) call removeGuest and pass through that id
+                removeGuest(variableId);
 
-        // TODO (8) Inside, get the viewHolder's itemView's tag and store in a long variable id
-        // TODO (9) call removeGuest and pass through that id
-        // TODO (10) call swapCursor on mAdapter passing in getAllGuests() as the argument
-
-        //TODO (11) attach the ItemTouchHelper to the waitlistRecyclerView
-
+                // COMP (10) call swapCursor on mAdapter passing in getAllGuests() as the argument
+                mAdapter.swapCursor(getAllGuests());
+            }
+            // COMP (11) attach the ItemTouchHelper to the waitlistRecyclerView
+        };
+        waitlistRecyclerView.addOnItemTouchListener(swipeTouchHelper);
     }
 
     /**
