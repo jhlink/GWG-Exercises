@@ -33,9 +33,6 @@ public class MainActivity extends AppCompatActivity {
         // Set layout for the RecyclerView, because it's a list we are using the linear layout
         waitlistRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        // Create an adapter for that cursor to display the data
-        mAdapter = new GuestListAdapter(this);
-
         // COMP (2) Create a WaitlistDbHelper instance, pass "this" to the constructor as context
         WaitlistDbHelper waitlistDbHelper = new WaitlistDbHelper(this);
 
@@ -48,7 +45,10 @@ public class MainActivity extends AppCompatActivity {
         // COMP (7) Run the getAllGuests function and store the result in a Cursor variable
         Cursor cursor = getAllGuests();
 
-        // TODO (12) Pass the resulting cursor count to the adapter
+        // COMP (12) Pass the resulting cursor count to the adapter
+        // Create an adapter for that cursor to display the data
+        int count = cursor.getCount();
+        mAdapter = new GuestListAdapter(this, count);
 
         // Link the adapter to the RecyclerView
         waitlistRecyclerView.setAdapter(mAdapter);
