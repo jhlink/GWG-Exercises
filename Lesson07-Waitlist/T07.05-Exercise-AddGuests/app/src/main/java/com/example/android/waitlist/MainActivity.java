@@ -100,9 +100,14 @@ public class MainActivity extends AppCompatActivity {
         // COMP (14) call addNewGuest with the guest name and party size
         addGuest(guestNameText, initPartySize);
 
-        // TODO (19) call mAdapter.swapCursor to update the cursor by passing in getAllGuests()
+        // COMP (19) call mAdapter.swapCursor to update the cursor by passing in getAllGuests()
+        mAdapter.swapCursor(getAllGuests());
 
-        // TODO (20) To make the UI look nice, call .getText().clear() on both EditTexts, also call clearFocus() on mNewPartySizeEditText
+        // COMP (20) To make the UI look nice, call .getText().clear() on both EditTexts, also call
+        // clearFocus() on mNewPartySizeEditText
+        mNewPartySizeEditText.getText().clear();
+        mNewGuestNameEditText.getText().clear();
+        mNewPartySizeEditText.clearFocus();
     }
 
     /**
