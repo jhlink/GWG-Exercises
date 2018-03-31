@@ -46,6 +46,9 @@ public class MainActivity extends AppCompatActivity {
     private TextView mTVWord;
     private TextView mTVDefinition;
 
+    private int wordColumnIndex;
+    private int definitionColumnIndex;
+
     // This state is when the word definition is hidden and clicking the button will therefore
     // show the definition
     private final int STATE_HIDDEN = 0;
@@ -145,14 +148,14 @@ public class MainActivity extends AppCompatActivity {
 
             // COMP (2) Initialize anything that you need the cursor for, such as setting up
             // the screen with the first word and setting any other instance variables
-            int wordColIndex = mData.getColumnIndex(DroidTermsExampleContract.COLUMN_WORD);
-            int definitionColIndex = mData.getColumnIndex(DroidTermsExampleContract
+            wordColumnIndex = mData.getColumnIndex(DroidTermsExampleContract.COLUMN_WORD);
+            definitionColumnIndex = mData.getColumnIndex(DroidTermsExampleContract
                     .COLUMN_DEFINITION);
 
             mData.moveToNext();
 
-            String word = mData.getString(wordColIndex);
-            String definition = mData.getString(definitionColIndex);
+            String word = mData.getString(wordColumnIndex);
+            String definition = mData.getString(definitionColumnIndex);
 
             mTVWord.setText(word);
             mTVDefinition.setText(definition);
