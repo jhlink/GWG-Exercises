@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
         //COMP (3) Create a new ItemTouchHelper with a SimpleCallback that handles both LEFT and
         // RIGHT swipe directions
-        ItemTouchHelper swipeTouchHelper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback
                 (0,
                 ItemTouchHelper.LEFT |
                 ItemTouchHelper.RIGHT) {
@@ -82,8 +82,7 @@ public class MainActivity extends AppCompatActivity {
                 mAdapter.swapCursor(getAllGuests());
             }
             // COMP (11) attach the ItemTouchHelper to the waitlistRecyclerView
-        };
-        waitlistRecyclerView.addOnItemTouchListener(swipeTouchHelper);
+        }).attachToRecyclerView(waitlistRecyclerView);
     }
 
     /**
