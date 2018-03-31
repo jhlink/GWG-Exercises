@@ -1,28 +1,33 @@
 /*
-* Copyright (C) 2016 The Android Open Source Project
-*
-* Licensed under the Apache License, Version 2.0 (the "License");
-* you may not use this file except in compliance with the License.
-* You may obtain a copy of the License at
-*
-*      http://www.apache.org/licenses/LICENSE-2.0
-*
-* Unless required by applicable law or agreed to in writing, software
-* distributed under the License is distributed on an "AS IS" BASIS,
-* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-* See the License for the specific language governing permissions and
-* limitations under the License.
-*/
+ * Copyright (C) 2016 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
 package com.example.android.todolist.data;
 
 import android.content.ContentProvider;
+import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.UriMatcher;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.support.annotation.NonNull;
+
+import static com.example.android.todolist.data.TaskContract.TaskEntry.CONTENT_URI;
+import static com.example.android.todolist.data.TaskContract.TaskEntry.TABLE_NAME;
 
 // Verify that TaskContentProvider extends from ContentProvider and implements required methods
 public class TaskContentProvider extends ContentProvider {
@@ -37,9 +42,12 @@ public class TaskContentProvider extends ContentProvider {
     private static final UriMatcher sUriMatcher = buildUriMatcher();
 
     // Define a static buildUriMatcher method that associates URI's with their int match
+    // Member variable for a TaskDbHelper that's initialized in the onCreate() method
+    private TaskDbHelper mTaskDbHelper;
+
     /**
-     Initialize a new matcher object without any matches,
-     then use .addURI(String authority, String path, int match) to add matches
+     * Initialize a new matcher object without any matches,
+     * then use .addURI(String authority, String path, int match) to add matches
      */
     public static UriMatcher buildUriMatcher() {
 
@@ -56,9 +64,6 @@ public class TaskContentProvider extends ContentProvider {
 
         return uriMatcher;
     }
-
-    // Member variable for a TaskDbHelper that's initialized in the onCreate() method
-    private TaskDbHelper mTaskDbHelper;
 
     /* onCreate() is where you should initialize anything you’ll need to setup
     your underlying data source.
@@ -78,16 +83,37 @@ public class TaskContentProvider extends ContentProvider {
 
     @Override
     public Uri insert(@NonNull Uri uri, ContentValues values) {
-        // TODO (1) Get access to the task database (to write new data to)
+        // COMP (1) Get access to the task database (to write new data to)
+        final SQLiteDatabase db = mTaskDbHelper.getWritableDatabase();
 
-        // TODO (2) Write URI matching code to identify the match for the tasks directory
+        // COMP (2) Write URI matching code to identify the match for the tasks directory
+        int match = sUriMatcher.match(uri);
 
-        // TODO (3) Insert new values into the database
-        // TODO (4) Set the value for the returnedUri and write the default case for unknown URI's
+        // COMP (3) Insert new values into the database
+        // COMP (4) Set the value for the returnedUri and write the default case for unknown URI's
 
-        // TODO (5) Notify the resolver if the uri has been changed, and return the newly inserted URI
+        Uri returnUri;
 
-        throw new UnsupportedOperationException("Not yet implemented");
+        switch (match) {
+            case TASKS:
+                long id = db.insert(TABLE_NAME, null, values);
+                if (id > 0) {
+                    returnUri = ContentUris.withAppendedId(CONTENT_URI, id);
+                } else {
+                    throw new android.database.SQLException("Failed to insert row into " + uri);
+                }
+                break;
+
+            default:
+                throw new UnsupportedOperationException("Unknown uri: " + uri);
+                break;
+        }
+
+        // COMP (5) Notify the resolver if the uri has been changed, and return the newly inserted
+        // URI
+        getContext().getContentResolver().notifyChange(uri, null);
+
+        return returnUri;
     }
 
 
