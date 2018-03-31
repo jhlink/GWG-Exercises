@@ -95,14 +95,41 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private void readRecord() {
+        if (mData == null) {
+            return;
+        }
+        String word = mData.getString(wordColumnIndex);
+        String definition = mData.getString(definitionColumnIndex);
+
+        mTVWord.setText(word);
+        mTVDefinition.setText(definition);
+
+        Log.d(LOG_TAG, word + " - " + definition);
+    }
+
     public void nextWord() {
 
         // Change button text
         mButton.setText(getString(R.string.show_definition));
 
-        // TODO (3) Go to the next word in the Cursor, show the next word and hide the definition
+        // COMP (3) Go to the next word in the Cursor, show the next word and hide the definition
         // Note that you shouldn't try to do this if the cursor hasn't been set yet.
         // If you reach the end of the list of words, you should start at the beginning again.
+        if (mData == null) {
+            return;
+        }
+
+        boolean moveResult = mData.moveToNext();
+        if (!moveResult) {
+            mData.moveToFirst();
+        }
+
+        readRecord();
+
+        mTVWord.setVisibility(View.VISIBLE);
+        mTVDefinition.setVisibility(View.INVISIBLE);
+
         mCurrentState = STATE_HIDDEN;
     }
 
@@ -154,13 +181,8 @@ public class MainActivity extends AppCompatActivity {
 
             mData.moveToNext();
 
-            String word = mData.getString(wordColumnIndex);
-            String definition = mData.getString(definitionColumnIndex);
+            readRecord();
 
-            mTVWord.setText(word);
-            mTVDefinition.setText(definition);
-
-            Log.d(LOG_TAG, word + " - " + definition);
         }
     }
 }
