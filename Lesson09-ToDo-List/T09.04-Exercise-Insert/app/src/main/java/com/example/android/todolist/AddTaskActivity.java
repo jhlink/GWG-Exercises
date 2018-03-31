@@ -75,11 +75,12 @@ public class AddTaskActivity extends AppCompatActivity {
 
 
         // COMP (8) Display the URI that's returned with a Toast
-        Toast uriDisplay = Toast.makeText(this, "Task Uri Location: " + uri, Toast.LENGTH_LONG);
-        uriDisplay.show();
+        if (uri != null) {
+            Toast.makeText(this, "Task Uri Location: " + uri, Toast.LENGTH_LONG).show();
+        }
 
-        finish();
         // [Hint] Don't forget to call finish() to return to MainActivity after this insert is complete
+        finish();
 
     }
 
