@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // COMP (4) Create a new addGuest method
-    private void addGuest(String guestName, int partySize) {
+    private long addGuest(String guestName, int partySize) {
         // COMP (5) Inside, create a ContentValues instance to pass the values onto the insert query
         ContentValues newGuest = new ContentValues();
 
@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
         newGuest.put(partySizeKey, partySize);
 
         // COMP (8) call insert to run an insert query on TABLE_NAME with the ContentValues created
-        mDb.insert(
+        return mDb.insert(
                 WaitlistContract.WaitlistEntry.TABLE_NAME,
                 null,
                 newGuest
