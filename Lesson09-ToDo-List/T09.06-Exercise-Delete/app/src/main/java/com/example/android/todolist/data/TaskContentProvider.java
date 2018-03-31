@@ -183,7 +183,7 @@ public class TaskContentProvider extends ContentProvider {
         // [Hint] Use selections to delete an item by its row ID
 
         // COMP (3) Notify the resolver of a change and return the number of items deleted
-        if (deleteResult > 0) {
+        if (deleteResult != 0) {
             getContext().getContentResolver().notify();
         }
 
