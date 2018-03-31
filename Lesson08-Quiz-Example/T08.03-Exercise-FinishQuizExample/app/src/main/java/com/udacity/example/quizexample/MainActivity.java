@@ -138,14 +138,16 @@ public class MainActivity extends AppCompatActivity {
         // Change button text
         mButton.setText(getString(R.string.next_word));
 
-        // TODO (4) Show the definition
+        // COMP (4) Show the definition
+        mTVDefinition.setVisibility(View.VISIBLE);
         mCurrentState = STATE_SHOWN;
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        // TODO (5) Remember to close your cursor!
+        // COMP (5) Remember to close your cursor!
+        mData.close();
     }
 
     // Use an async task to do the data fetch off of the main thread.
