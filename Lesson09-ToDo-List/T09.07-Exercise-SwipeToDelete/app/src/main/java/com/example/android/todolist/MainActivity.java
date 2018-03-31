@@ -87,9 +87,7 @@ public class MainActivity extends AppCompatActivity implements
                 //[Hint] Use getTag (from the adapter code) to get the id of the swiped item
 
                 // COMP (2) Delete a single row of data using a ContentResolver
-                String selection = TaskContract.TaskEntry._ID + "=?";
-                String[] selectionArgs = new String[]{ stringId };
-                getContentResolver().delete(uri, selection, selectionArgs);
+                getContentResolver().delete(uri, null, null);
 
                 // COMP (3) Restart the loader to re-query for all tasks after a deletion
                 getSupportLoaderManager().restartLoader(TASK_LOADER_ID, null, MainActivity.this);
