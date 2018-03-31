@@ -34,29 +34,22 @@ import com.udacity.example.droidtermsprovider.DroidTermsExampleContract;
 
 public class MainActivity extends AppCompatActivity {
 
-    // The data from the DroidTermsExample content provider
-    private Cursor mData;
-
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
-
-    // The current state of the app
-    private int mCurrentState;
-
-    private Button mButton;
-    private TextView mTVWord;
-    private TextView mTVDefinition;
-
-    private int wordColumnIndex;
-    private int definitionColumnIndex;
-
     // This state is when the word definition is hidden and clicking the button will therefore
     // show the definition
     private final int STATE_HIDDEN = 0;
-
     // This state is when the word definition is shown and clicking the button will therefore
     // advance the app to the next word
     private final int STATE_SHOWN = 1;
-
+    // The data from the DroidTermsExample content provider
+    private Cursor mData;
+    // The current state of the app
+    private int mCurrentState;
+    private Button mButton;
+    private TextView mTVWord;
+    private TextView mTVDefinition;
+    private int wordColumnIndex;
+    private int definitionColumnIndex;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * This is called from the layout when the button is clicked and switches between the
      * two app states.
+     *
      * @param view The view that was clicked
      */
     public void onButtonClick(View view) {
@@ -115,32 +109,31 @@ public class MainActivity extends AppCompatActivity {
 
         // COMP (3) Go to the next word in the Cursor, show the next word and hide the definition
         // Note that you shouldn't try to do this if the cursor hasn't been set yet.
-        // If you reach the end of the list of words, you should start at the beginning again.
-        if (mData == null) {
-            return;
+        // If you reach the end of the list of words, you should start at the beginning again.A
+        if (mData != null) {
+            boolean moveResult = mData.moveToNext();
+            if (!moveResult) {
+                mData.moveToFirst();
+            }
+
+            readRecord();
+
+            mTVWord.setVisibility(View.VISIBLE);
+            mTVDefinition.setVisibility(View.INVISIBLE);
+
+            mCurrentState = STATE_HIDDEN;
         }
-
-        boolean moveResult = mData.moveToNext();
-        if (!moveResult) {
-            mData.moveToFirst();
-        }
-
-        readRecord();
-
-        mTVWord.setVisibility(View.VISIBLE);
-        mTVDefinition.setVisibility(View.INVISIBLE);
-
-        mCurrentState = STATE_HIDDEN;
     }
 
     public void showDefinition() {
+        if (mData != null) {
+            // Change button text
+            mButton.setText(getString(R.string.next_word));
 
-        // Change button text
-        mButton.setText(getString(R.string.next_word));
-
-        // COMP (4) Show the definition
-        mTVDefinition.setVisibility(View.VISIBLE);
-        mCurrentState = STATE_SHOWN;
+            // COMP (4) Show the definition
+            mTVDefinition.setVisibility(View.VISIBLE);
+            mCurrentState = STATE_SHOWN;
+        }
     }
 
     @Override
