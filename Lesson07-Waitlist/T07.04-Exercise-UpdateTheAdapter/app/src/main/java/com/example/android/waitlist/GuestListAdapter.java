@@ -38,15 +38,27 @@ public class GuestListAdapter extends RecyclerView.Adapter<GuestListAdapter.Gues
 
     @Override
     public void onBindViewHolder(GuestViewHolder holder, int position) {
-        // TODO (5) Move the cursor to the passed in position, return if moveToPosition returns false
+        // COMP (5) Move the cursor to the passed in position, return if moveToPosition returns
+        // false
+        if (!mCursor.moveToPosition(position)) {
+            return;
+        }
 
-        // TODO (6) Call getString on the cursor to get the guest's name
+        // COMP (6) Call getString on the cursor to get the guest's name
+        int guestNameColumnIndex = mCursor.getColumnIndex(WaitlistContract.WaitlistEntry
+                .COLUMN_GUEST_NAME);
+        String guestName = mCursor.getString(guestNameColumnIndex);
 
-        // TODO (7) Call getInt on the cursor to get the party size
+        // COMP (7) Call getInt on the cursor to get the party size
+        int partySizeColumnIndex = mCursor.getColumnIndex(WaitlistContract.WaitlistEntry
+                .COLUMN_PARTY_SIZE);
+        int partySize = mCursor.getInt(partySizeColumnIndex);
 
-        // TODO (8) Set the holder's nameTextView text to the guest's name
+        // COMP (8) Set the holder's nameTextView text to the guest's name
+        holder.nameTextView.setText(guestName);
 
-        // TODO (9) Set the holder's partySizeTextView text to the party size
+        // COMP (9) Set the holder's partySizeTextView text to the party size
+        holder.partySizeTextView.setText(String.valueOf(partySize));
     }
 
     @Override
