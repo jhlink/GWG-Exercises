@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             initPartySize = Integer.parseInt(mNewPartySizeEditText.getText().toString());
         } catch (Exception e) {
-            Log.d(LOG_TAG, String.valueOf(e));
+            Log.e(LOG_TAG, e.getMessage());
             return;
         }
 
