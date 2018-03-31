@@ -12,7 +12,10 @@ public class WaitlistDbHelper extends SQLiteOpenHelper {
     // COMP (3) Create a static final int called DATABASE_VERSION and set it to 1
     private static final int DATABASE_VERSION = 1;
 
-    // TODO (4) Create a Constructor that takes a context and calls the parent constructor
+    // COMP (4) Create a Constructor that takes a context and calls the parent constructor
+    public WaitlistDbHelper(Context context) {
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+    }
 
     // TODO (5) Override the onCreate method
 
