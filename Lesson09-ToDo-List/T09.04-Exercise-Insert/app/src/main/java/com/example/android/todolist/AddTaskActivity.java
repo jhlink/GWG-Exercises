@@ -16,10 +16,22 @@
 
 package com.example.android.todolist;
 
+import android.content.ContentResolver;
+import android.content.ContentValues;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.Toast;
+
+import com.example.android.todolist.data.TaskContract;
+
+import static com.example.android.todolist.data.TaskContract.TaskEntry.COLUMN_DESCRIPTION;
+import static com.example.android.todolist.data.TaskContract.TaskEntry.COLUMN_PRIORITY;
+import static com.example.android.todolist.data.TaskContract.TaskEntry.CONTENT_URI;
 
 
 public class AddTaskActivity extends AppCompatActivity {
@@ -44,11 +56,29 @@ public class AddTaskActivity extends AppCompatActivity {
      */
     public void onClickAddTask(View view) {
         // Not yet implemented
-        // TODO (6) Check if EditText is empty, if not retrieve input and store it in a ContentValues object
+        // COMP (6) Check if EditText is empty, if not retrieve input and store it in a
+        // ContentValues object
 
-        // TODO (7) Insert new task data via a ContentResolver
+        EditText inputTextBox = (EditText) findViewById(R.id.editTextTaskDescription);
+        String inputTextBoxResult = inputTextBox.getText().toString();
 
-        // TODO (8) Display the URI that's returned with a Toast
+        if (TextUtils.isEmpty(inputTextBoxResult)) {
+            return;
+        }
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COLUMN_DESCRIPTION, inputTextBoxResult);
+        contentValues.put(COLUMN_PRIORITY, mPriority);
+
+        // COMP (7) Insert new task data via a ContentResolver
+        Uri uri = getContentResolver().insert(CONTENT_URI, contentValues);
+
+
+        // COMP (8) Display the URI that's returned with a Toast
+        Toast uriDisplay = Toast.makeText(this, "Task Uri Location: " + uri, Toast.LENGTH_LONG);
+        uriDisplay.show();
+
+        finish();
         // [Hint] Don't forget to call finish() to return to MainActivity after this insert is complete
 
     }
