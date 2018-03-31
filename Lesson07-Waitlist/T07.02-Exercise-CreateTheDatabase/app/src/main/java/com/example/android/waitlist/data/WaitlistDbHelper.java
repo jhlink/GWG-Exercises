@@ -23,16 +23,28 @@ public class WaitlistDbHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
     // COMP (6) Inside, create an String query called SQL_CREATE_WAITLIST_TABLE that will create the
         // table
-        String query = "SQL_CREATE_WAITLIST_TABLE";
+        final String SQL_CREATE_WAITLIST_TABLE = "CREATE TABLE" +
+                WaitlistContract.WaitlistEntry.TABLE_NAME + " (" +
+                WaitlistContract.WaitlistEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+                WaitlistContract.WaitlistEntry.COLUMN_GUEST_NAME + " TEXT NOT NULL," +
+                WaitlistContract.WaitlistEntry.COLUMN_PARTY_SIZE + " INTEGER NOT NULL," +
+                WaitlistContract.WaitlistEntry.COLUMN_TIMESTAMP + " TIMESTAMP DEFAULT " +
+                "CURRENT_TIMESTAMP" +
+                ");";
+
 
         // COMP (7) Execute the query by calling execSQL on sqLiteDatabase and pass the string query
         // SQL_CREATE_WAITLIST_TABLE
-        db.execSQL(query);
+        db.execSQL(SQL_CREATE_WAITLIST_TABLE);
 
     }
 
-    // TODO (8) Override the onUpgrade method
-
+    // COMP (8) Override the onUpgrade method
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // TODO (9) Inside, execute a drop table query, and then call onCreate to re-create it
-
+        if (oldVersion != newVersion) {
+            db.
+        }
+    }
 }
