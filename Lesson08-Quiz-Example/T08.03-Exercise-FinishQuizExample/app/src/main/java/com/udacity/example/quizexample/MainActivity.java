@@ -148,16 +148,16 @@ public class MainActivity extends AppCompatActivity {
             int wordColIndex = mData.getColumnIndex(DroidTermsExampleContract.COLUMN_WORD);
             int definitionColIndex = mData.getColumnIndex(DroidTermsExampleContract
                     .COLUMN_DEFINITION);
-            while(mData.moveToNext()) {
-                String word = mData.getString(wordColIndex);
-                String definition = mData.getString(definitionColIndex);
 
-                mTVWord.setText(word);
-                mTVDefinition.setText(definition);
-                Log.d(LOG_TAG, word + " - " + definition);
-                nextWord();
-            }
+            mData.moveToNext();
+
+            String word = mData.getString(wordColIndex);
+            String definition = mData.getString(definitionColIndex);
+
+            mTVWord.setText(word);
+            mTVDefinition.setText(definition);
+
+            Log.d(LOG_TAG, word + " - " + definition);
         }
     }
-
 }
