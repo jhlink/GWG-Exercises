@@ -106,7 +106,6 @@ public class TaskContentProvider extends ContentProvider {
 
             default:
                 throw new UnsupportedOperationException("Unknown uri: " + uri);
-                break;
         }
 
         // COMP (5) Notify the resolver if the uri has been changed, and return the newly inserted
