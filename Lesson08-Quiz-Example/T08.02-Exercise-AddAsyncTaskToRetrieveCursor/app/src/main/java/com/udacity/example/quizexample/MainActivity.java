@@ -35,7 +35,8 @@ public class MainActivity extends AppCompatActivity {
     // The current state of the app
     private int mCurrentState;
 
-    // TODO (3) Create an instance variable storing a Cursor called mData
+    // COMP (3) Create an instance variable storing a Cursor called mData
+    private Cursor mData;
     private Button mButton;
 
     // This state is when the word definition is hidden and clicking the button will therefore
@@ -55,12 +56,14 @@ public class MainActivity extends AppCompatActivity {
         // Get the views
         mButton = (Button) findViewById(R.id.button_next);
 
-        // TODO (5) Create and execute your AsyncTask here
+        // COMP (5) Create and execute your AsyncTask here
+        new WeatherFetchTask().execute();
     }
 
     /**
      * This is called from the layout when the button is clicked and switches between the
      * two app states.
+     *
      * @param view The view that was clicked
      */
     public void onButtonClick(View view) {
@@ -95,23 +98,27 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    new AsyncTask<Void, Void, Cursor> {
-
-    };
-
     // COMP (1) Create AsyncTask with the following generic types <Void, Void, Cursor>
     // COMP (2) In the doInBackground method, write the code to access the DroidTermsExample
     // provider and return the Cursor object
-    // TODO (4) In the onPostExecute method, store the Cursor object in mData
+    // COMP (4) In the onPostExecute method, store the Cursor object in mData
     public class WeatherFetchTask extends AsyncTask<Void, Void, Cursor> {
         @Override
         protected Cursor doInBackground(Void... voids) {
             ContentResolver contentResolver = getContentResolver();
             Cursor cursor = contentResolver.query(DroidTermsExampleContract.CONTENT_URI, null,
-                    null,null, null);
+                    null, null, null);
             return cursor;
         }
 
+        @Override
+        protected void onPostExecute(Cursor cursor) {
+            super.onPostExecute(cursor);
+            if (cursor != null) {
+                mData = cursor;
+            }
+        }
     }
+}
 
 
