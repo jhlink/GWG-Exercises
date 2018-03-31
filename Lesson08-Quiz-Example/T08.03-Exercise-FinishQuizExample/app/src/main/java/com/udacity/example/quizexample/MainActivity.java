@@ -23,6 +23,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.udacity.example.droidtermsprovider.DroidTermsExampleContract;
 
@@ -39,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
     private int mCurrentState;
 
     private Button mButton;
+    private TextView mTVWord;
+    private TextView mTVDefinition;
 
     // This state is when the word definition is hidden and clicking the button will therefore
     // show the definition
@@ -55,8 +58,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Get the views
-        // TODO (1) You'll probably want more than just the Button
+        // COMP (1) You'll probably want more than just the Button
+        //      Alright, smarty pants... Alluding to the text views I see.
+        //      I see what you did there... ;0
         mButton = (Button) findViewById(R.id.button_next);
+        mTVDefinition = (TextView) findViewById(R.id.text_view_definition);
+        mTVWord = (TextView) findViewById(R.id.text_view_word);
 
         //Run the database operation to get the cursor off of the main thread
         new WordFetchTask().execute();
