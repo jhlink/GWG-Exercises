@@ -21,6 +21,7 @@ import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -35,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
 
     // The data from the DroidTermsExample content provider
     private Cursor mData;
+
+    private static final String LOG_TAG = MainActivity.class.getSimpleName();
 
     // The current state of the app
     private int mCurrentState;
@@ -98,7 +101,6 @@ public class MainActivity extends AppCompatActivity {
         // Note that you shouldn't try to do this if the cursor hasn't been set yet.
         // If you reach the end of the list of words, you should start at the beginning again.
         mCurrentState = STATE_HIDDEN;
-
     }
 
     public void showDefinition() {
@@ -108,7 +110,6 @@ public class MainActivity extends AppCompatActivity {
 
         // TODO (4) Show the definition
         mCurrentState = STATE_SHOWN;
-
     }
 
     @Override
@@ -134,7 +135,6 @@ public class MainActivity extends AppCompatActivity {
             return cursor;
         }
 
-
         // Invoked on UI thread
         @Override
         protected void onPostExecute(Cursor cursor) {
@@ -143,8 +143,20 @@ public class MainActivity extends AppCompatActivity {
             // Set the data for MainActivity
             mData = cursor;
 
-            // TODO (2) Initialize anything that you need the cursor for, such as setting up
+            // COMP (2) Initialize anything that you need the cursor for, such as setting up
             // the screen with the first word and setting any other instance variables
+            int wordColIndex = mData.getColumnIndex(DroidTermsExampleContract.COLUMN_WORD);
+            int definitionColIndex = mData.getColumnIndex(DroidTermsExampleContract
+                    .COLUMN_DEFINITION);
+            while(mData.moveToNext()) {
+                String word = mData.getString(wordColIndex);
+                String definition = mData.getString(definitionColIndex);
+
+                mTVWord.setText(word);
+                mTVDefinition.setText(definition);
+                Log.d(LOG_TAG, word + " - " + definition);
+                nextWord();
+            }
         }
     }
 
