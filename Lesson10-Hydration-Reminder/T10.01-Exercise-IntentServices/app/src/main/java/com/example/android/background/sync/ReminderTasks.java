@@ -11,10 +11,17 @@ public class ReminderTasks {
     public final static String ACTION_INCREMENT_WATER_COUNT = "INC_COUNT";
 
 
-// TODO (6) Create a public static void method called executeTask
-// TODO (7) Add a Context called context and String parameter called action to the parameter list
+// COMP (6) Create a public static void method called executeTask
+// COMP (7) Add a Context called context and String parameter called action to the parameter list
+// COMP (8) If the action equals ACTION_INCREMENT_WATER_COUNT, call this class's incrementWaterCount
+    public static void executeTask(Context context, String action) {
+        switch (action) {
+            case ACTION_INCREMENT_WATER_COUNT:
+                incrementWaterCount(context);
+                break;
+        }
+    }
 
-// TODO (8) If the action equals ACTION_INCREMENT_WATER_COUNT, call this class's incrementWaterCount
 
 // COMP (3) Create a private static void method called incrementWaterCount
 // COMP (4) Add a Context called context to the argument list
