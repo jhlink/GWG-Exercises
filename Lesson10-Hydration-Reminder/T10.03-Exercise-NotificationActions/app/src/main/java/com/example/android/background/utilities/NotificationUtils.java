@@ -52,7 +52,7 @@ public class NotificationUtils {
     private static final String WATER_REMINDER_NOTIFICATION_CHANNEL_ID = "reminder_notification_channel";
 
     //  COMP (1) Create a method to clear all notifications
-    public void clearAllNotifications() {
+    public static void clearAllNotifications() {
         clearAllNotifications();
     }
 
