@@ -138,7 +138,7 @@ public class NotificationUtils {
                 context,
                 WATER_REMINDER_PENDING_INTENT_ID,
                 launchWaterReminderIntentServiceIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT
+                PendingIntent.FLAG_CANCEL_CURRENT
         );
 
         //  COMP (15) Create an Action for the user to tell us they've had a glass of water
