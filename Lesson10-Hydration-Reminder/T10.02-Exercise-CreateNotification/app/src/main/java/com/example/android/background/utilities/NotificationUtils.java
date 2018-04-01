@@ -1,5 +1,6 @@
 package com.example.android.background.utilities;
 
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -17,6 +18,7 @@ import com.example.android.background.R;
 public class NotificationUtils {
 
     private final static int PENDING_INTENT_NOTIF_ID = 42;
+    private static final String WATER_REMINDER_NOTIFICATION_ID = "reminder_notification_channel";
 
     // COMP (7) Create a method called remindUserBecauseCharging which takes a Context.
     // This method will create a notification for charging. It might be helpful
@@ -28,7 +30,12 @@ public class NotificationUtils {
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context
                 .NOTIFICATION_SERVICE);
 
-        // TODO (9) Create a notification channel for Android O devices
+        // COMP (9) Create a notification channel for Android O devices
+        NotificationChannel mChannel = new NotificationChannel(
+                WATER_REMINDER_NOTIFICATION_ID,
+                context.getString(R.string.charging_reminder_notification_title),
+                NotificationManager.IMPORTANCE_HIGH
+        );
 
         // TODO (10) In the remindUser method use NotificationCompat.Builder to create a notification
         // that:
