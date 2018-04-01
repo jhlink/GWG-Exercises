@@ -1,9 +1,17 @@
 package com.example.android.background.utilities;
 
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+
+import com.example.android.background.MainActivity;
+
 /**
  * Utility class for creating hydration notifications
  */
 public class NotificationUtils {
+
+    public final static int PENDING_INTENT_NOTIF_ID = 42;
 
     // TODO (7) Create a method called remindUserBecauseCharging which takes a Context.
     // This method will create a notification for charging. It might be helpful
@@ -29,18 +37,26 @@ public class NotificationUtils {
 
 
 
-    // TODO (1) Create a helper method called contentIntent with a single parameter for a Context. It
-    // should return a PendingIntent. This method will create the pending intent which will trigger when
-    // the notification is pressed. This pending intent should open up the MainActivity.
-        // TODO (2) Create an intent that opens up the MainActivity
-        // TODO (3) Create a PendingIntent using getActivity that:
-            // - Take the context passed in as a parameter
-            // - Takes an unique integer ID for the pending intent (you can create a constant for
-            //   this integer above
-            // - Takes the intent to open the MainActivity you just created; this is what is triggered
-            //   when the notification is triggered
-            // - Has the flag FLAG_UPDATE_CURRENT, so that if the intent is created again, keep the
-            // intent but update the data
+    // COMP (1) Create a helper method called contentIntent with a single parameter for a Context.
+    //  It should return a PendingIntent. This method will create the pending intent which will
+    //  trigger when the notification is pressed. This pending intent should open up the
+    //  MainActivity.
+    public PendingIntent contentIntent(Context context) {
+
+        // COMP (2) Create an intent that opens up the MainActivity
+        Intent openMainActivityIntent = new Intent(context, MainActivity.class);
+
+        // COMP (3) Create a PendingIntent using getActivity that:
+        // - Take the context passed in as a parameter
+        // - Takes an unique integer ID for the pending intent (you can create a constant for
+        //   this integer above
+        // - Takes the intent to open the MainActivity you just created; this is what is triggered
+        //   when the notification is triggered
+        // - Has the flag FLAG_UPDATE_CURRENT, so that if the intent is created again, keep the
+        // intent but update the data
+        PendingIntent.getActivity(context, PENDING_INTENT_NOTIF_ID, openMainActivityIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT);
+    }
 
 
     // TODO (4) Create a helper method called largeIcon which takes in a Context as a parameter and
