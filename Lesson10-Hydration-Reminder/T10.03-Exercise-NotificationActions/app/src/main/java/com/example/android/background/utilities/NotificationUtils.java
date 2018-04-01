@@ -93,7 +93,7 @@ public class NotificationUtils {
     }
 
     //  COMP (5) Add a static method called ignoreReminderAction
-    public static void ignoreReminderAction(Context context) {
+    public static NotificationCompat.Action ignoreReminderAction(Context context) {
         //  COMP (6) Create an Intent to launch WaterReminderIntentService
         Intent launchWaterReminderIntentServiceIntent = new Intent(this,
                 WaterReminderIntentService.class);
@@ -109,8 +109,15 @@ public class NotificationUtils {
                 PendingIntent.FLAG_UPDATE_CURRENT
         );
 
-        //  TODO (9) Create an Action for the user to ignore the notification (and dismiss it)
-        //  TODO (10) Return the action
+        //  COMP (9) Create an Action for the user to ignore the notification (and dismiss it)
+        NotificationCompat.Action ignoreReminderAction = new NotificationCompat.Action(
+                R.drawable.ic_cancel_black_24px,
+                "No, thanks.",
+                pendingIntent
+        );
+
+        //  COMP (10) Return the action
+        return ignoreReminderAction;
     }
 
     //  TODO (11) Add a static method called drinkWaterAction
