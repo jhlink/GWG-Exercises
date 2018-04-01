@@ -73,6 +73,8 @@ public class NotificationUtils {
         // resources object and R.drawable.ic_local_drink_black_24px
         Bitmap largerImg = BitmapFactory.decodeResource(imgObj, R.drawable
                 .ic_local_drink_black_24px);
+
+        return largerImg;
     }
 
 
