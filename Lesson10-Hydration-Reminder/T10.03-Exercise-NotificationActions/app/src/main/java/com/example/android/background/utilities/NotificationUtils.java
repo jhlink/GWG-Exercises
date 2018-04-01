@@ -26,6 +26,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationCompat.Action;
 import android.support.v4.content.ContextCompat;
 
 import com.example.android.background.MainActivity;
@@ -96,7 +97,7 @@ public class NotificationUtils {
     }
 
     //  COMP (5) Add a static method called ignoreReminderAction
-    public static NotificationCompat.Action ignoreReminderAction(Context context) {
+    private static Action ignoreReminderAction(Context context) {
         //  COMP (6) Create an Intent to launch WaterReminderIntentService
         Intent launchWaterReminderIntentServiceIntent = new Intent(context,
                 WaterReminderIntentService.class);
@@ -113,7 +114,7 @@ public class NotificationUtils {
         );
 
         //  COMP (9) Create an Action for the user to ignore the notification (and dismiss it)
-        NotificationCompat.Action ignoreReminderAction = new NotificationCompat.Action(
+        Action ignoreReminderAction = new Action(
                 R.drawable.ic_cancel_black_24px,
                 "No, thanks.",
                 pendingIntent
@@ -124,7 +125,7 @@ public class NotificationUtils {
     }
 
     //  COMP (11) Add a static method called drinkWaterAction
-    public static NotificationCompat.Action drinkWaterActon(Context context) {
+    private static Action drinkWaterActon(Context context) {
         //  COMP (12) Create an Intent to launch WaterReminderIntentService
         Intent launchWaterReminderIntentServiceIntent = new Intent(context,
                 WaterReminderIntentService.class);
@@ -142,7 +143,7 @@ public class NotificationUtils {
         );
 
         //  COMP (15) Create an Action for the user to tell us they've had a glass of water
-        NotificationCompat.Action drinkWaterAction = new NotificationCompat.Action(
+        Action drinkWaterAction = new Action(
                 R.drawable.ic_local_drink_black_24px,
                 "Okay~",
                 pendingIntent
