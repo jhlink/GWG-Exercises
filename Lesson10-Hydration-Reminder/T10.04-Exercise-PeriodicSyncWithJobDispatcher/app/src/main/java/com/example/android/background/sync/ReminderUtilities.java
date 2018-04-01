@@ -17,6 +17,7 @@ package com.example.android.background.sync;
 
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 
 import java.util.concurrent.TimeUnit;
 
@@ -38,7 +39,7 @@ public class ReminderUtilities {
     // in a context. This method will use FirebaseJobDispatcher to schedule a job that repeats roughly
     // every REMINDER_INTERVAL_SECONDS when the phone is charging. It will trigger WaterReminderFirebaseJobService
     // Checkout https://github.com/firebase/firebase-jobdispatcher-android for an example
-    synchronized public static void scheduleChargingReminder(Context context) {
+    synchronized public static void scheduleChargingReminder(@NonNull final  Context context) {
 
         // TODO (17) If the job has already been initialized, return
         // TODO (18) Create a new GooglePlayDriver
