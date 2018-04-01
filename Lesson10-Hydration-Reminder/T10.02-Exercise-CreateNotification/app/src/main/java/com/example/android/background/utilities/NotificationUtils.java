@@ -15,12 +15,14 @@ import com.example.android.background.R;
  */
 public class NotificationUtils {
 
-    public final static int PENDING_INTENT_NOTIF_ID = 42;
+    private final static int PENDING_INTENT_NOTIF_ID = 42;
 
-    // TODO (7) Create a method called remindUserBecauseCharging which takes a Context.
+    // COMP (7) Create a method called remindUserBecauseCharging which takes a Context.
     // This method will create a notification for charging. It might be helpful
     // to take a look at this guide to see an example of what the code in this method will look like:
     // https://developer.android.com/training/notify-user/build-notification.html
+    public void remindUserBecauseCharging(Context context) {
+
         // TODO (8) Get the NotificationManager using context.getSystemService
         // TODO (9) Create a notification channel for Android O devices
         // TODO (10) In the remindUser method use NotificationCompat.Builder to create a notification
@@ -38,7 +40,7 @@ public class NotificationUtils {
         // set the notification's priority to PRIORITY_HIGH.
         // TODO (12) Trigger the notification by calling notify on the NotificationManager.
         // Pass in a unique ID of your choosing for the notification and notificationBuilder.build()
-
+    }
 
 
     // COMP (1) Create a helper method called contentIntent with a single parameter for a Context.
@@ -58,8 +60,12 @@ public class NotificationUtils {
         //   when the notification is triggered
         // - Has the flag FLAG_UPDATE_CURRENT, so that if the intent is created again, keep the
         // intent but update the data
-        PendingIntent.getActivity(context, PENDING_INTENT_NOTIF_ID, openMainActivityIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent.getActivity(
+                context,
+                PENDING_INTENT_NOTIF_ID,
+                openMainActivityIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT
+        );
     }
 
 
