@@ -3,8 +3,12 @@ package com.example.android.background.utilities;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 
 import com.example.android.background.MainActivity;
+import com.example.android.background.R;
 
 /**
  * Utility class for creating hydration notifications
@@ -59,11 +63,17 @@ public class NotificationUtils {
     }
 
 
-    // TODO (4) Create a helper method called largeIcon which takes in a Context as a parameter and
+    // COMP (4) Create a helper method called largeIcon which takes in a Context as a parameter and
     // returns a Bitmap. This method is necessary to decode a bitmap needed for the notification.
-        // TODO (5) Get a Resources object from the context.
-        // TODO (6) Create and return a bitmap using BitmapFactory.decodeResource, passing in the
+    private Bitmap largeIcon(Context context) {
+        // COMP (5) Get a Resources object from the context.
+        Resources imgObj = context.getResources();
+
+        // COMP (6) Create and return a bitmap using BitmapFactory.decodeResource, passing in the
         // resources object and R.drawable.ic_local_drink_black_24px
+        Bitmap largerImg = BitmapFactory.decodeResource(imgObj, R.drawable
+                .ic_local_drink_black_24px);
+    }
 
 
 }
