@@ -10,7 +10,9 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Build;
+import android.os.VibrationEffect;
 import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationCompat.BigTextStyle;
 import android.support.v4.content.ContextCompat;
 
 import com.example.android.background.MainActivity;
@@ -22,6 +24,7 @@ import com.example.android.background.R;
 public class NotificationUtils {
 
     private final static int PENDING_INTENT_NOTIF_ID = 42;
+    private static final int WATER_REMINDER_CHANNEL_ID = 7;
     private static final String WATER_REMINDER_NOTIFICATION_ID = "reminder_notification_channel";
 
     // COMP (7) Create a method called remindUserBecauseCharging which takes a Context.
@@ -44,7 +47,8 @@ public class NotificationUtils {
             notificationManager.createNotificationChannel(mChannel);
         }
 
-        // TODO (10) In the remindUser method use NotificationCompat.Builder to create a notification
+        // COMP (10) In the remindUser method use NotificationCompat.Builder to create a
+        // notification
         // that:
         // - has a color of R.colorPrimary - use ContextCompat.getColor to get a compatible color
         // - has ic_drink_notification as the small icon
@@ -56,21 +60,31 @@ public class NotificationUtils {
         // - uses the content intent returned by the contentIntent helper method for the contentIntent
         // - automatically cancels the notification when the notification is clicked
 
-        Notification dasNotif = new Notification.Builder(context)
-                .setColor(ContextCompat.getColor(context, R.color.colorPrimary))
-                .setSmallIcon(R.drawable.ic_drink_notification)
-                .setLargeIcon(largeIcon(context))
-                .setContentTitle(R.string.charging_reminder_notification_title)
-                .setContentText(R.string.charging_reminder_notification_body)
-                .setStyle(new NotificationCompat.BigTextStyle()
-                        .bigText(context.getText(R.string.charging_reminder_notification_body)))
-                .
+        NotificationCompat.Builder dasNotifBuilder =
+                new NotificationCompat.Builder(context, WATER_REMINDER_NOTIFICATION_ID)
+                    .setColor(ContextCompat.getColor(context, R.color.colorPrimary))
+                    .setSmallIcon(R.drawable.ic_drink_notification)
+                    .setLargeIcon(largeIcon(context))
+                    .setContentTitle(context.getString(R.string
+                            .charging_reminder_notification_title))
+                    .setContentText(context.getString(R.string.charging_reminder_notification_body))
+                    .setStyle(new BigTextStyle().bigText(context.getString(R.string
+                                    .charging_reminder_notification_body)))
+                    .setDefaults(Notification.DEFAULT_VIBRATE)
+                    .setContentIntent(contentIntent(context))
+                    .setAutoCancel(true);
 
-
-        // TODO (11) If the build version is greater than JELLY_BEAN and lower than OREO,
+        // COMP (11) If the build version is greater than JELLY_BEAN and lower than OREO,
         // set the notification's priority to PRIORITY_HIGH.
-        // TODO (12) Trigger the notification by calling notify on the NotificationManager.
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN
+                && Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
+            dasNotifBuilder.setPriority(NotificationCompat.PRIORITY_HIGH);
+        }
+
+        // COMP (12) Trigger the notification by calling notify on the NotificationManager.
         // Pass in a unique ID of your choosing for the notification and notificationBuilder.build()
+        notificationManager.notify(WATER_REMINDER_CHANNEL_ID, dasNotifBuilder.build());
     }
 
 
@@ -91,7 +105,7 @@ public class NotificationUtils {
         //   when the notification is triggered
         // - Has the flag FLAG_UPDATE_CURRENT, so that if the intent is created again, keep the
         // intent but update the data
-        PendingIntent.getActivity(
+        return PendingIntent.getActivity(
                 context,
                 PENDING_INTENT_NOTIF_ID,
                 openMainActivityIntent,
