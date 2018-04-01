@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity implements
 
     // COMP (15) Create a method called testNotification that triggers NotificationUtils'
     // remindUserBecauseCharging
-    public void testNotification() {
+    public void testNotification(View v) {
         NotificationUtils.remindUserBecauseCharging(this);
     }
 
