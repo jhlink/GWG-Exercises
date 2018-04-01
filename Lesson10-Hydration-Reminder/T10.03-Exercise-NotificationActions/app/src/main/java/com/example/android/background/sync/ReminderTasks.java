@@ -32,7 +32,7 @@ public class ReminderTasks {
         }
         //  COMP (3) If the user ignored the reminder, clear the notification
         if (ACTION_DISMISS_NOTIFICATOIN.equals(action)) {
-            NotificationUtils.clearAllNotifications();
+            NotificationUtils.clearAllNotifications(context);
         }
 
     }
@@ -40,6 +40,6 @@ public class ReminderTasks {
     private static void incrementWaterCount(Context context) {
         PreferenceUtilities.incrementWaterCount(context);
         //  COMP (4) If the water count was incremented, clear any notifications
-        NotificationUtils.clearAllNotifications();
+        NotificationUtils.clearAllNotifications(context);
     }
 }
