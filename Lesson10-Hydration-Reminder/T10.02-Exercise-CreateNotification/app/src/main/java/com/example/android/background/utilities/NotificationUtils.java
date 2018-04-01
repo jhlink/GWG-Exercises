@@ -1,5 +1,6 @@
 package com.example.android.background.utilities;
 
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
@@ -21,10 +22,14 @@ public class NotificationUtils {
     // This method will create a notification for charging. It might be helpful
     // to take a look at this guide to see an example of what the code in this method will look like:
     // https://developer.android.com/training/notify-user/build-notification.html
-    public void remindUserBecauseCharging(Context context) {
+    public static void remindUserBecauseCharging(Context context) {
 
-        // TODO (8) Get the NotificationManager using context.getSystemService
+        // COMP (8) Get the NotificationManager using context.getSystemService
+        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context
+                .NOTIFICATION_SERVICE);
+
         // TODO (9) Create a notification channel for Android O devices
+
         // TODO (10) In the remindUser method use NotificationCompat.Builder to create a notification
         // that:
         // - has a color of R.colorPrimary - use ContextCompat.getColor to get a compatible color
@@ -47,7 +52,7 @@ public class NotificationUtils {
     //  It should return a PendingIntent. This method will create the pending intent which will
     //  trigger when the notification is pressed. This pending intent should open up the
     //  MainActivity.
-    public PendingIntent contentIntent(Context context) {
+    public static PendingIntent contentIntent(Context context) {
 
         // COMP (2) Create an intent that opens up the MainActivity
         Intent openMainActivityIntent = new Intent(context, MainActivity.class);
@@ -71,7 +76,7 @@ public class NotificationUtils {
 
     // COMP (4) Create a helper method called largeIcon which takes in a Context as a parameter and
     // returns a Bitmap. This method is necessary to decode a bitmap needed for the notification.
-    private Bitmap largeIcon(Context context) {
+    private static Bitmap largeIcon(Context context) {
         // COMP (5) Get a Resources object from the context.
         Resources imgObj = context.getResources();
 
