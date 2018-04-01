@@ -98,7 +98,7 @@ public class NotificationUtils {
     //  COMP (5) Add a static method called ignoreReminderAction
     public static NotificationCompat.Action ignoreReminderAction(Context context) {
         //  COMP (6) Create an Intent to launch WaterReminderIntentService
-        Intent launchWaterReminderIntentServiceIntent = new Intent(this,
+        Intent launchWaterReminderIntentServiceIntent = new Intent(context,
                 WaterReminderIntentService.class);
 
         //  COMP (7) Set the action of the intent to designate you want to dismiss the notification
@@ -126,7 +126,7 @@ public class NotificationUtils {
     //  COMP (11) Add a static method called drinkWaterAction
     public static NotificationCompat.Action drinkWaterActon(Context context) {
         //  COMP (12) Create an Intent to launch WaterReminderIntentService
-        Intent launchWaterReminderIntentServiceIntent = new Intent(this,
+        Intent launchWaterReminderIntentServiceIntent = new Intent(context,
                 WaterReminderIntentService.class);
 
         //  COMP (13) Set the action of the intent to designate you want to increment the water
