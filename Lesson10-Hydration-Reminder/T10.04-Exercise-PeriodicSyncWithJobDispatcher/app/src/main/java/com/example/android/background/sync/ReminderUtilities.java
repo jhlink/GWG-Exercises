@@ -17,12 +17,16 @@ package com.example.android.background.sync;
 
 
 public class ReminderUtilities {
-    // TODO (15) Create three constants and one variable:
+    // COMP (15) Create three constants and one variable:
     //  - REMINDER_INTERVAL_SECONDS should be an integer constant storing the number of seconds in 15 minutes
     //  - SYNC_FLEXTIME_SECONDS should also be an integer constant storing the number of seconds in 15 minutes
     //  - REMINDER_JOB_TAG should be a String constant, storing something like "hydration_reminder_tag"
     //  - sInitialized should be a private static boolean variable which will store whether the job
     //    has been activated or not
+    public final static int REMINDER_INTERVAL_SECONDS = 900;
+    public final static int SYNC_FLEXTIME_SECONDS = 900;
+    public final static String REMINDER_JOB_TAG = "hydration_reminder_tag";
+    private static boolean sInitialized = false;
 
     // TODO (16) Create a synchronized, public static method called scheduleChargingReminder that takes
     // in a context. This method will use FirebaseJobDispatcher to schedule a job that repeats roughly
