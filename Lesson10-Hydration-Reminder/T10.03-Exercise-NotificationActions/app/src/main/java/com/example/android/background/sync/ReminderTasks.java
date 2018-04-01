@@ -29,9 +29,8 @@ public class ReminderTasks {
     public static void executeTask(Context context, String action) {
         if (ACTION_INCREMENT_WATER_COUNT.equals(action)) {
             incrementWaterCount(context);
-        }
-        //  COMP (3) If the user ignored the reminder, clear the notification
-        if (ACTION_DISMISS_NOTIFICATOIN.equals(action)) {
+        } else if (ACTION_DISMISS_NOTIFICATOIN.equals(action)) {
+            //  COMP (3) If the user ignored the reminder, clear the notification
             NotificationUtils.clearAllNotifications(context);
         }
 
