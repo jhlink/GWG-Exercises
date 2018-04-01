@@ -14,10 +14,18 @@
  * limitations under the License.
  */
 
-// TODO (9) Create WaterReminderIntentService and extend it from IntentService
+import android.app.IntentService;
 
-//  TODO (10) Create a default constructor that calls super with the name of this class
+// COMP (9) Create WaterReminderIntentService and extend it from IntentService
+public class WaterReminderIntentService extends IntentService {
+
+//  COMP (10) Create a default constructor that calls super with the name of this class
+    public WaterReminderIntentService() {
+        super(WaterReminderIntentService.class.getName());
+    }
 
 //  TODO (11) Override onHandleIntent
 //      TODO (12) Get the action from the Intent that started this Service
 //      TODO (13) Call ReminderTasks.executeTaskForTag and pass in the action to be performed
+}
+
