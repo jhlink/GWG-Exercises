@@ -143,7 +143,7 @@ public class NotificationUtils {
 
         //  COMP (15) Create an Action for the user to tell us they've had a glass of water
         NotificationCompat.Action drinkWaterAction = new NotificationCompat.Action(
-                R.drawable.ic_drink_notification,
+                R.drawable.ic_local_drink_black_24px,
                 "Okay~",
                 pendingIntent
         );
