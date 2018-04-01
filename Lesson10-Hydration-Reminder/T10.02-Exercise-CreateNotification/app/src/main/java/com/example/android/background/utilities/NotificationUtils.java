@@ -1,5 +1,6 @@
 package com.example.android.background.utilities;
 
+import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -8,6 +9,9 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Build;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.content.ContextCompat;
 
 import com.example.android.background.MainActivity;
 import com.example.android.background.R;
@@ -31,11 +35,14 @@ public class NotificationUtils {
                 .NOTIFICATION_SERVICE);
 
         // COMP (9) Create a notification channel for Android O devices
-        NotificationChannel mChannel = new NotificationChannel(
-                WATER_REMINDER_NOTIFICATION_ID,
-                context.getString(R.string.charging_reminder_notification_title),
-                NotificationManager.IMPORTANCE_HIGH
-        );
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel mChannel = new NotificationChannel(
+                    WATER_REMINDER_NOTIFICATION_ID,
+                    context.getString(R.string.main_notification_channel_name),
+                    NotificationManager.IMPORTANCE_HIGH
+            );
+            notificationManager.createNotificationChannel(mChannel);
+        }
 
         // TODO (10) In the remindUser method use NotificationCompat.Builder to create a notification
         // that:
@@ -48,6 +55,18 @@ public class NotificationUtils {
         // - sets the notification defaults to vibrate
         // - uses the content intent returned by the contentIntent helper method for the contentIntent
         // - automatically cancels the notification when the notification is clicked
+
+        Notification dasNotif = new Notification.Builder(context)
+                .setColor(ContextCompat.getColor(context, R.color.colorPrimary))
+                .setSmallIcon(R.drawable.ic_drink_notification)
+                .setLargeIcon(largeIcon(context))
+                .setContentTitle(R.string.charging_reminder_notification_title)
+                .setContentText(R.string.charging_reminder_notification_body)
+                .setStyle(new NotificationCompat.BigTextStyle()
+                        .bigText(context.getText(R.string.charging_reminder_notification_body)))
+                .
+
+
         // TODO (11) If the build version is greater than JELLY_BEAN and lower than OREO,
         // set the notification's priority to PRIORITY_HIGH.
         // TODO (12) Trigger the notification by calling notify on the NotificationManager.
