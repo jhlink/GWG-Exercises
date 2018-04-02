@@ -86,13 +86,19 @@ public class MainActivity extends AppCompatActivity implements
         String formattedChargingReminders = getResources().getQuantityString(
                 R.plurals.charge_notification_count, chargingReminders, chargingReminders);
         mChargingCountDisplay.setText(formattedChargingReminders);
-
     }
 
-    // TODO (1) Create a new method called showCharging which takes a boolean. This method should
+    // COMP (1) Create a new method called showCharging which takes a boolean. This method should
     // either change the image of mChargingImageView to ic_power_pink_80px if the boolean is true
     // or R.drawable.ic_power_grey_80px it it's not. This method will eventually update the UI
     // when our broadcast receiver is triggered when the charging state changes.
+    private void showCharging(boolean isCharging) {
+        if (isCharging) {
+            mChargingImageView.setImageResource(R.drawable.ic_power_pink_80px);
+        } else {
+            mChargingImageView.setImageResource(R.drawable.ic_power_grey_80px);
+        }
+    }
 
     /**
      * Adds one to the water count and shows a toast
