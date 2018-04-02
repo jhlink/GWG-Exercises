@@ -40,8 +40,10 @@ public class MainActivity extends AppCompatActivity implements
     private TextView mWaterCountDisplay;
     private TextView mChargingCountDisplay;
     private ImageView mChargingImageView;
-
     private Toast mToast;
+
+    ChargingBroadcastReceiver mChargingBroadcastReceiver;
+    IntentFilter mIntentFilter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,18 +66,24 @@ public class MainActivity extends AppCompatActivity implements
 
         // COMP (5) Create and instantiate a new instance variable for your
         // ChargingBroadcastReceiver and an IntentFilter
-        ChargingBroadcastReceiver chargingBroadcastReceiver = new ChargingBroadcastReceiver();
-        IntentFilter intentFilter = new IntentFilter();
+        mChargingBroadcastReceiver = new ChargingBroadcastReceiver();
+        mIntentFilter = new IntentFilter();
 
         // COMP (6) Call the addAction method on your intent filter and add Intent
         // .ACTION_POWER_CONNECTED and Intent.ACTION_POWER_DISCONNECTED. This sets up an intent
         // filter which will trigger when the charging state changes.
-        intentFilter.addAction(Intent.ACTION_POWER_CONNECTED);
-        intentFilter.addAction(Intent.ACTION_POWER_DISCONNECTED);
+        mIntentFilter.addAction(Intent.ACTION_POWER_CONNECTED);
+        mIntentFilter.addAction(Intent.ACTION_POWER_DISCONNECTED);
     }
 
-    // TODO (7) Override onResume and setup your broadcast receiver. Do this by calling
+    // COMP (7) Override onResume and setup your broadcast receiver. Do this by calling
     // registerReceiver with the ChargingBroadcastReceiver and IntentFilter.
+    @Override
+    protected void onResume() {
+        registerReceiver(mChargingBroadcastReceiver, mIntentFilter);
+        super.onResume();
+    }
+
 
     // TODO (8) Override onPause and unregister your receiver using the unregisterReceiver method
     
