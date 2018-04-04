@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?><!-- COM (17) Surround the Constraint layout with a ScrollView --><!-- COMP (2) Replace the Relative layout with a ConstraintLayout -->
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:id="@+id/scroll"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
