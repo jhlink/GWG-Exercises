@@ -9,8 +9,6 @@
     <!-- COMP (3) Create a TextView for the Passenger label and name -->
     <!-- COMP (4) Use tool:text to set the text value -->
 
-
-
     <TextView
         android:id="@+id/textViewPassengerLabel"
         android:layout_width="wrap_content"
@@ -120,7 +118,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
-        android:textSize="32sp"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="@+id/textViewBoardingTimeLabel"
         app:layout_constraintTop_toBottomOf="@+id/textViewBoardingTimeLabel"
         tools:text="@string/boarding_time" />
@@ -131,7 +129,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="32dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/leftRectangle"
         tools:text="@string/boarding_time_label" />
@@ -161,7 +159,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/leftRectangle"
         tools:text="@string/boarding_in_label" />
@@ -173,7 +171,7 @@
         android:layout_marginTop="8dp"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
         android:textColor="@color/colorBad"
-        android:textSize="32sp"
+        android:textSize="24sp"
         tools:text="@string/boarding_in_time"
         app:layout_constraintEnd_toEndOf="@+id/textViewBoardingInLabel"
         app:layout_constraintTop_toBottomOf="@+id/textViewBoardingInLabel" />
@@ -204,7 +202,7 @@
         android:layout_height="32dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintBottom_toTopOf="@+id/tableImage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
