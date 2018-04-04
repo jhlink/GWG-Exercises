@@ -47,9 +47,21 @@ public class MainActivity extends AppCompatActivity {
 
     private void displayBoardingPassInfo(BoardingPassInfo info) {
 
-        // TODO (6) Use mBinding to set the Text in all the textViews using the data in info
+        // COMP (6) Use mBinding to set the Text in all the textViews using the data in info
+        mBinding.setVariable(R.id.textViewPassengerName, info.passengerName);
+        mBinding.setVariable(R.id.textViewFlightCode, info.flightCode);
+        mBinding.setVariable(R.id.textViewOriginAirport, info.originCode);
+        mBinding.setVariable(R.id.textViewDestinationAirport, info.destCode);
+        mBinding.setVariable(R.id.textViewBoardingTime, info.boardingTime);
+        mBinding.setVariable(R.id.textViewDepartureTime, info.departureTime);
+        mBinding.setVariable(R.id.textViewArrivalTime, info.arrivalTime);
+        mBinding.setVariable(R.id.textViewTerminal, info.departureTerminal);
+        mBinding.setVariable(R.id.textViewGate, info.departureGate);
+        mBinding.setVariable(R.id.textViewSeat, info.seatNumber);
+        mBinding.setVariable(R.id.barcode, info.barCodeImageResource);
 
         // TODO (7) Use a SimpleDateFormat formatter to set the formatted value in time text views
+
 
         // TODO (8) Use TimeUnit methods to format the total minutes until boarding
 
