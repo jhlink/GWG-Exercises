@@ -190,14 +190,37 @@
         app:layout_constraintEnd_toEndOf="@+id/textViewArrivalTimeLabel"
         app:layout_constraintTop_toBottomOf="@+id/textViewArrivalTimeLabel" />
 
+    <!-- COMP (11) Create an ImageView for the blue table's header -->
+    <ImageView
+        android:id="@+id/tableHeaderImage"
+        android:layout_width="0dp"
+        android:layout_height="24dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintBottom_toTopOf="@+id/tableImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDepartureTime"
+        app:srcCompat="@color/colorPrimaryLight" />
+
+    <!-- COMP (12) Create an ImageView for the blue table's body -->
+    <ImageView
+        android:id="@+id/tableImage"
+        android:layout_width="0dp"
+        android:layout_height="39dp"
+        app:layout_constraintEnd_toEndOf="@+id/tableHeaderImage"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tableHeaderImage"
+        app:layout_constraintTop_toBottomOf="@+id/tableHeaderImage"
+        app:srcCompat="@color/colorPrimary" />
+
 
     <!-- TODO (15) Import the plane image SVG file into the drawable directory and name it art_plane -->
     <!-- TODO (16) Create an ImageView for the plane and set the background to art_plane drawable -->
 
 
-    <!-- TODO (11) Create an ImageView for the blue table's header -->
 
-    <!-- TODO (12) Create an ImageView for the blue table's body -->
 
     <!-- TODO (13) Create a TextView for each of the labels and text fields in the blue table -->
 
