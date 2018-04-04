@@ -47,6 +47,8 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewPassengerName"
         app:srcCompat="@drawable/shape_rectangle_stroke" />
 
+    <!-- COMP (8) Create an ImageView for the rightRectangle -->
+
     <ImageView
         android:id="@+id/rightRectangle"
         android:layout_width="60dp"
@@ -59,9 +61,20 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewPassengerName"
         app:srcCompat="@drawable/shape_rectangle_stroke" />
 
-    <!-- TODO (7) Create an ImageView for the divider -->
+    <!-- COMP (7) Create an ImageView for the divider -->
 
-    <!-- TODO (8) Create an ImageView for the rightRectangle -->
+    <ImageView
+        android:id="@+id/divider"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        app:layout_constraintBottom_toTopOf="@+id/rightRectangle"
+        app:layout_constraintEnd_toStartOf="@+id/rightRectangle"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/leftRectangle"
+        app:layout_constraintTop_toBottomOf="@+id/leftRectangle"
+        app:srcCompat="@color/colorPrimaryLight" />
+
+
 
     <!-- TODO (9) Create a TextView for the origin code, the destination code and the flight code -->
 
