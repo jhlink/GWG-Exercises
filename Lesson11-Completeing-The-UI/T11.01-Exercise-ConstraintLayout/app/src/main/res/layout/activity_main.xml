@@ -9,6 +9,8 @@
     <!-- COMP (3) Create a TextView for the Passenger label and name -->
     <!-- COMP (4) Use tool:text to set the text value -->
 
+
+
     <TextView
         android:id="@+id/textViewPassengerLabel"
         android:layout_width="wrap_content"
@@ -102,6 +104,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+
         app:layout_constraintBottom_toBottomOf="@+id/divider"
         app:layout_constraintEnd_toEndOf="@+id/rightRectangle"
         app:layout_constraintStart_toEndOf="@+id/divider"
@@ -109,12 +112,50 @@
         app:layout_constraintVertical_bias="0.653"
         tools:text="@string/destination_code" />
 
+    <!-- COMP (10) Create a TextView for the time texts and their corresponding labels -->
+
+    <TextView
+        android:id="@+id/textViewBoardingTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@+id/textViewBoardingTimeLabel"
+        app:layout_constraintTop_toBottomOf="@+id/textViewBoardingTimeLabel"
+        tools:text="@string/boarding_time" />
+
+    <TextView
+        android:id="@+id/textViewBoardingTimeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="32dp"
+        android:layout_marginStart="32dp"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="216dp"
+        tools:text="@string/boarding_time_label" />
+
+    <TextView
+        android:id="@+id/textViewDepartureLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="32dp"
+        android:layout_marginStart="32dp"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="278dp"
+        tools:text="@string/departure_time_label" />
+
+    <TextView
+        android:id="@+id/textViewDepartureTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@+id/textViewDepartureLabel"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDepartureLabel"
+        tools:text="@string/departure_time" />
 
 
     <!-- TODO (15) Import the plane image SVG file into the drawable directory and name it art_plane -->
     <!-- TODO (16) Create an ImageView for the plane and set the background to art_plane drawable -->
 
-    <!-- TODO (10) Create a TextView for the time texts and their corresponding labels -->
 
     <!-- TODO (11) Create an ImageView for the blue table's header -->
 
