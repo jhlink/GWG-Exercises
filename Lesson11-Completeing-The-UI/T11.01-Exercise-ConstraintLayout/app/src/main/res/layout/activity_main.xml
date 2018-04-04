@@ -119,6 +119,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
+        android:textSize="32sp"
         app:layout_constraintStart_toStartOf="@+id/textViewBoardingTimeLabel"
         app:layout_constraintTop_toBottomOf="@+id/textViewBoardingTimeLabel"
         tools:text="@string/boarding_time" />
@@ -148,6 +150,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:textColor="@color/colorGood"
         app:layout_constraintStart_toStartOf="@+id/textViewDepartureLabel"
         app:layout_constraintTop_toBottomOf="@+id/textViewDepartureLabel"
         tools:text="@string/departure_time" />
@@ -168,6 +171,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
+        android:textColor="@color/colorBad"
+        android:textSize="32sp"
         tools:text="@string/boarding_in_time"
         app:layout_constraintEnd_toEndOf="@+id/textViewBoardingInLabel"
         app:layout_constraintTop_toBottomOf="@+id/textViewBoardingInLabel" />
@@ -187,6 +193,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         tools:text="@string/arrival_time"
+        android:textColor="@color/colorGood"
         app:layout_constraintEnd_toEndOf="@+id/textViewArrivalTimeLabel"
         app:layout_constraintTop_toBottomOf="@+id/textViewArrivalTimeLabel" />
 
