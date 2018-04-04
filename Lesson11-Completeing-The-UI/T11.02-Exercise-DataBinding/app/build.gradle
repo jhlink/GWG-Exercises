@@ -18,7 +18,7 @@ android {
             minifyEnabled false
         }
     }
-    // TODO (1) Enable Data Binding in your application
+    // COMP (1) Enable Data Binding in your application
     dataBinding.enabled = true
 }
 
