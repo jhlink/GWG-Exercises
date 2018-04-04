@@ -129,8 +129,9 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="32dp"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="216dp"
+        app:layout_constraintTop_toBottomOf="@+id/leftRectangle"
         tools:text="@string/boarding_time_label" />
 
     <TextView
@@ -139,8 +140,9 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="32dp"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="278dp"
+        app:layout_constraintTop_toBottomOf="@+id/textViewBoardingTime"
         tools:text="@string/departure_time_label" />
 
     <TextView
@@ -151,6 +153,46 @@
         app:layout_constraintStart_toStartOf="@+id/textViewDepartureLabel"
         app:layout_constraintTop_toBottomOf="@+id/textViewDepartureLabel"
         tools:text="@string/departure_time" />
+
+    <TextView
+        android:id="@+id/textViewBoardingInLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/leftRectangle"
+        tools:text="@string/boarding_in_label" />
+
+    <TextView
+        android:id="@+id/textViewBoardingInTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        tools:text="@string/boarding_in_time"
+        app:layout_constraintEnd_toEndOf="@+id/textViewBoardingInLabel"
+        app:layout_constraintTop_toBottomOf="@+id/textViewBoardingInLabel" />
+
+    <TextView
+        android:id="@+id/textViewArrivalTimeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewBoardingInTime"
+        tools:text="@string/arrival_time_label" />
+
+    <TextView
+        android:id="@+id/textViewArrivalTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        tools:text="@string/arrival_time"
+        app:layout_constraintEnd_toEndOf="@+id/textViewArrivalTimeLabel"
+        app:layout_constraintTop_toBottomOf="@+id/textViewArrivalTimeLabel" />
 
 
     <!-- TODO (15) Import the plane image SVG file into the drawable directory and name it art_plane -->
