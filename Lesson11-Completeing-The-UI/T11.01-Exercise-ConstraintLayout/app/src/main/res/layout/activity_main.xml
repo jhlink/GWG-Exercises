@@ -1,26 +1,39 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- TODO (17) Surround the Constraint layout with a ScrollView -->
-<!-- COMP (2) Replace the Relative layout with a ConstraintLayout -->
+<?xml version="1.0" encoding="utf-8"?><!-- TODO (17) Surround the Constraint layout with a ScrollView --><!-- COMP (2) Replace the Relative layout with a ConstraintLayout -->
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <!-- COMP (3) Create a TextView for the Passenger label and name -->
     <!-- COMP (4) Use tool:text to set the text value -->
     <TextView
+        android:id="@+id/textViewPassengerLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="@string/passenger_label">
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/passenger_label" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="@string/passenger_name">
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@+id/textViewPassengerLabel"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPassengerLabel"
+        android:id="@+id/textViewPassengerName"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Display1"
+        android:textColor="@color/colorPrimary"
+        tools:text="@string/passenger_name" />
 
     <!-- TODO (5) Create an ImageView for the left rectangle -->
     <!-- TODO (6) Set the background to the shape_rectangle_stroke drawable -->
+    <ImageView android:background="@drawable/shape_rectangle_stroke" />
 
     <!-- TODO (7) Create an ImageView for the divider -->
 
