@@ -194,7 +194,7 @@
     <ImageView
         android:id="@+id/tableHeaderImage"
         android:layout_width="0dp"
-        android:layout_height="24dp"
+        android:layout_height="32"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginTop="32dp"
@@ -208,21 +208,103 @@
     <ImageView
         android:id="@+id/tableImage"
         android:layout_width="0dp"
-        android:layout_height="39dp"
+        android:layout_height="48"
         app:layout_constraintEnd_toEndOf="@+id/tableHeaderImage"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/tableHeaderImage"
         app:layout_constraintTop_toBottomOf="@+id/tableHeaderImage"
         app:srcCompat="@color/colorPrimary" />
 
+    <!-- COMP (13) Create a TextView for each of the labels and text fields in the blue table -->
+
+    <TextView
+        android:id="@+id/textViewTerminalLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="48dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        tools:text="@string/terminal_label"
+        app:layout_constraintBottom_toBottomOf="@+id/tableHeaderImage"
+        app:layout_constraintEnd_toStartOf="@+id/textViewGateLabel"
+        app:layout_constraintStart_toStartOf="@+id/tableHeaderImage"
+        app:layout_constraintTop_toTopOf="@+id/tableHeaderImage" />
+
+    <TextView
+        android:id="@+id/textViewTerminal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        tools:text="@string/terminal"
+        app:layout_constraintBottom_toBottomOf="@+id/tableImage"
+        app:layout_constraintEnd_toEndOf="@+id/textViewTerminalLabel"
+        app:layout_constraintStart_toStartOf="@+id/textViewTerminalLabel"
+        app:layout_constraintTop_toBottomOf="@+id/tableHeaderImage" />
+
+    <TextView
+        android:id="@+id/textViewGateLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tableHeaderImage"
+        app:layout_constraintEnd_toEndOf="@+id/tableHeaderImage"
+        app:layout_constraintStart_toStartOf="@+id/tableHeaderImage"
+        app:layout_constraintTop_toTopOf="@+id/tableHeaderImage"
+        tools:text="@string/gate_label" />
+
+    <TextView
+        android:id="@+id/textViewGate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tableImage"
+        app:layout_constraintEnd_toEndOf="@+id/textViewGateLabel"
+        app:layout_constraintStart_toStartOf="@+id/textViewGateLabel"
+        app:layout_constraintTop_toBottomOf="@+id/tableHeaderImage"
+        tools:text="@string/gate" />
+
+    <TextView
+        android:id="@+id/textViewSeatLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tableHeaderImage"
+        app:layout_constraintEnd_toEndOf="@+id/tableHeaderImage"
+        app:layout_constraintStart_toEndOf="@+id/textViewGateLabel"
+        app:layout_constraintTop_toTopOf="@+id/tableHeaderImage"
+        tools:text="@string/seat_label" />
+
+    <TextView
+        android:id="@+id/textViewSeat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        tools:text="@string/seat"
+        app:layout_constraintBottom_toBottomOf="@+id/tableImage"
+        app:layout_constraintEnd_toEndOf="@+id/textViewSeatLabel"
+        app:layout_constraintStart_toStartOf="@+id/textViewSeatLabel"
+        app:layout_constraintTop_toBottomOf="@+id/tableHeaderImage"
+         />
 
     <!-- TODO (15) Import the plane image SVG file into the drawable directory and name it art_plane -->
     <!-- TODO (16) Create an ImageView for the plane and set the background to art_plane drawable -->
 
-
-
-
-    <!-- TODO (13) Create a TextView for each of the labels and text fields in the blue table -->
 
     <!-- TODO (14) Create an ImageView for the barcode -->
 
