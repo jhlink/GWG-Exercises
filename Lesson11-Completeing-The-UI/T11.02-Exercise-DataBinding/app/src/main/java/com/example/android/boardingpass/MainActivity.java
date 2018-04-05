@@ -64,8 +64,17 @@ public class MainActivity extends AppCompatActivity {
         mBinding.textViewArrivalTime.setText( formatter.format(info.arrivalTime));
 
 
-        // TODO (8) Use TimeUnit methods to format the total minutes until boarding
-        int minutesLeftUntilBoarding = 0;
+        // COMP (8) Use TimeUnit methods to format the total minutes until boarding
+        long minutesUntilBoarding = info.getMinutesUntilBoarding();
+        long hoursUntilBoarding = TimeUnit.MINUTES.toHours(minutesUntilBoarding);
+        long minutesLessHoursUntilBoarding = minutesUntilBoarding - TimeUnit.HOURS.toMinutes
+                (hoursUntilBoarding);
+
+        String hoursAndMinutesBeforeBoarding = getString(R.string.countDownFormat,
+                hoursUntilBoarding,
+                minutesLessHoursUntilBoarding);
+
+        mBinding.textViewBoardingInCountdown.setText( hoursAndMinutesBeforeBoarding );
 
         mBinding.textViewTerminal.setText( info.departureTerminal);
         mBinding.textViewGate.setText( info.departureGate);
