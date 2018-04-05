@@ -76,10 +76,10 @@ public class MainActivity extends AppCompatActivity {
 
         mBinding.flightInfo.textViewBoardingInCountdown.setText(hoursAndMinutesUntilBoarding);
 
-        // TODO (8) Use the boardingInfo attribute in mBinding below to get the appropiate text Views
-        mBinding.textViewTerminal.setText(info.departureTerminal);
-        mBinding.textViewGate.setText(info.departureGate);
-        mBinding.textViewSeat.setText(info.seatNumber);
+        // COMP (8) Use the boardingInfo attribute in mBinding below to get the appropiate text Views
+        mBinding.boardingInfo.textViewTerminal.setText(info.departureTerminal);
+        mBinding.boardingInfo.textViewGate.setText(info.departureGate);
+        mBinding.boardingInfo.textViewSeat.setText(info.seatNumber);
     }
 }
 
