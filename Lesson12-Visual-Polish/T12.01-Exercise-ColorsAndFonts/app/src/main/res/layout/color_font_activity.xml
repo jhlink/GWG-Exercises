@@ -12,7 +12,13 @@
     tools:context="com.example.android.visualpolish.ColorFontActivity">
 
     <!-- Views for displaying colors -->
-    <!-- TODO (3) Add a view to display the newly created "colorPrimaryLight"; layout height = 48dp -->
+    <!-- COMP (3) Add a view to display the newly created "colorPrimaryLight"; layout height = 48dp
+     -->
+
+    <View android:id="@+id/primaryLight"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/colorPrimaryLight" />
 
     <View android:id="@+id/primary"
         android:layout_width="match_parent"
