@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-    COMP (1) Create a new xml file called flight_info in the layout directory
-    COMP (2) Create a new xml file called boarding_info in the layout directory
+    COMP (1) Create a new xml file called flight_table in the layout directory
+    COMP (2) Create a new xml file called boarding_table in the layout directory
 
     TODO (9) Copy activity_main.xml into the layout-land folder to have 2 layout xml files for the same activity
     TODO (10) Re-organize the views in the landscape file to fit all in the one screen
@@ -49,13 +49,13 @@
             tools:layout_constraintTop_creator="1" />
 
 <!--
-    COMP (3) Move all Views in the flight information section from activity_main to flight_info
+    COMP (3) Move all Views in the flight information section from activity_main to flight_table
     COMP (5) Add an include tag in activity_main to include flightInfo in the right position
 -->
 >
         <include
-            app:layout_constraintLeft_toLeftOf="parent"
-            layout="@layout/flight_info"
+            app:layout_constraintLeft_toRightOf="parent"
+            layout="@layout/flight_table"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/flight_info"
@@ -64,13 +64,13 @@
 
 
 <!--
-    COMP (4) Move all Views in the boarding information table from activity_main to boarding_info
+    COMP (4) Move all Views in the boarding information table from activity_main to boarding_table
     COMP (6) Add an include tag in activity_main to include boardingInfo in the right position
 -->
 
         <include
-            app:layout_constraintLeft_toRightOf="parent"
-            layout="@layout/boarding_info"
+            app:layout_constraintLeft_toLeftOf="parent"
+            layout="@layout/boarding_table"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/boarding_info"
