@@ -15,12 +15,12 @@
     <!-- COMP (3) Apply the "folderStyle" to all of these views and delete the redundant properties
      -->
 
-    <!-- TODO (5) Apply the "inboxStyle" to the inbox text view -->
+    <!-- COMP (5) Apply the "inboxStyle" to the inbox text view -->
     <TextView
         android:layout_width="match_parent"
         android:drawableStart="@drawable/ic_inbox"
         android:drawableLeft="@drawable/ic_inbox"
-        style="@style/folderStyle"
+        style="@style/inboxStyle"
         android:text="@string/inbox" />
 
     <TextView
