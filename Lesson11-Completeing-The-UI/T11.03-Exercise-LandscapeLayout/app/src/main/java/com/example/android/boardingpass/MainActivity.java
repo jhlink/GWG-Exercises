@@ -50,20 +50,20 @@ public class MainActivity extends AppCompatActivity {
     private void displayBoardingPassInfo(BoardingPassInfo info) {
 
         mBinding.textViewPassengerName.setText(info.passengerName);
-        // TODO (7) Use the flightInfor attribute in mBinding below to get the appropiate text Views
+        // COMP (7) Use the flightInfor attribute in mBinding below to get the appropiate text Views
 
-        mBinding.textViewOriginAirport.setText(info.originCode);
-        mBinding.textViewFlightCode.setText(info.flightCode);
-        mBinding.textViewDestinationAirport.setText(info.destCode);
+        mBinding.flightInfo.textViewOriginAirport.setText(info.originCode);
+        mBinding.flightInfo.textViewFlightCode.setText(info.flightCode);
+        mBinding.flightInfo.textViewDestinationAirport.setText(info.destCode);
 
         SimpleDateFormat formatter = new SimpleDateFormat(getString(R.string.timeFormat), Locale.getDefault());
         String boardingTime = formatter.format(info.boardingTime);
         String departureTime = formatter.format(info.departureTime);
         String arrivalTime = formatter.format(info.arrivalTime);
 
-        mBinding.textViewBoardingTime.setText(boardingTime);
-        mBinding.textViewDepartureTime.setText(departureTime);
-        mBinding.textViewArrivalTime.setText(arrivalTime);
+        mBinding.flightInfo.textViewBoardingTime.setText(boardingTime);
+        mBinding.flightInfo.textViewDepartureTime.setText(departureTime);
+        mBinding.flightInfo.textViewArrivalTime.setText(arrivalTime);
 
         long totalMinutesUntilBoarding = info.getMinutesUntilBoarding();
         long hoursUntilBoarding = TimeUnit.MINUTES.toHours(totalMinutesUntilBoarding);
@@ -74,7 +74,8 @@ public class MainActivity extends AppCompatActivity {
                 hoursUntilBoarding,
                 minutesLessHoursUntilBoarding);
 
-        mBinding.textViewBoardingInCountdown.setText(hoursAndMinutesUntilBoarding);
+        mBinding.flightInfo.textViewBoardingInCountdown.setText(hoursAndMinutesUntilBoarding);
+
         // TODO (8) Use the boardingInfo attribute in mBinding below to get the appropiate text Views
         mBinding.textViewTerminal.setText(info.departureTerminal);
         mBinding.textViewGate.setText(info.departureGate);
