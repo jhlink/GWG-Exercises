@@ -81,7 +81,6 @@ public class MainActivity extends AppCompatActivity {
         mBinding.textViewTerminal.setText( info.departureTerminal);
         mBinding.textViewGate.setText( info.departureGate);
         mBinding.textViewSeat.setText( info.seatNumber);
-        mBinding.barcode.setImageResource( info.barCodeImageResource);
 
     }
 }
