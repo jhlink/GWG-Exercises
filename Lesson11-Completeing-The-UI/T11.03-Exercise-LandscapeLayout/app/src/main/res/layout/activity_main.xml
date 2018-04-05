@@ -49,14 +49,15 @@
     COMP (5) Add an include tag in activity_main to include flightInfo in the right position
 -->
 >
+
         <include
-            app:layout_constraintLeft_toRightOf="parent"
-            layout="@layout/flight_table"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
             android:id="@+id/flight_info"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"/>
+            layout="@layout/flight_table"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintLeft_toLeftOf="@id/textViewPassengerName"
+            app:layout_constraintTop_toBottomOf="@id/textViewPassengerName" />
 
 
 <!--
@@ -65,13 +66,13 @@
 -->
 
         <include
-            app:layout_constraintLeft_toLeftOf="parent"
-            layout="@layout/boarding_table"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
             android:id="@+id/boarding_info"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"/>
+            layout="@layout/boarding_table"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintLeft_toLeftOf="@id/flight_info"
+            app:layout_constraintTop_toBottomOf="@id/flight_info" />
 
         <ImageView
             android:layout_width="100dp"
