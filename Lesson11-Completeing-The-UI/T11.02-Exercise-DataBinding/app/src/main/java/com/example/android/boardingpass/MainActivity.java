@@ -23,6 +23,9 @@ import android.support.v7.app.AppCompatActivity;
 import com.example.android.boardingpass.databinding.ActivityMainBinding;
 import com.example.android.boardingpass.utilities.FakeDataUtils;
 
+import java.text.SimpleDateFormat;
+import java.util.concurrent.TimeUnit;
+
 public class MainActivity extends AppCompatActivity {
 
     //COMP (3) Create a data binding instance called mBinding of type ActivityMainBinding
@@ -48,22 +51,26 @@ public class MainActivity extends AppCompatActivity {
     private void displayBoardingPassInfo(BoardingPassInfo info) {
 
         // COMP (6) Use mBinding to set the Text in all the textViews using the data in info
-        mBinding.setVariable(R.id.textViewPassengerName, info.passengerName);
-        mBinding.setVariable(R.id.textViewFlightCode, info.flightCode);
-        mBinding.setVariable(R.id.textViewOriginAirport, info.originCode);
-        mBinding.setVariable(R.id.textViewDestinationAirport, info.destCode);
-        mBinding.setVariable(R.id.textViewBoardingTime, info.boardingTime);
-        mBinding.setVariable(R.id.textViewDepartureTime, info.departureTime);
-        mBinding.setVariable(R.id.textViewArrivalTime, info.arrivalTime);
-        mBinding.setVariable(R.id.textViewTerminal, info.departureTerminal);
-        mBinding.setVariable(R.id.textViewGate, info.departureGate);
-        mBinding.setVariable(R.id.textViewSeat, info.seatNumber);
-        mBinding.setVariable(R.id.barcode, info.barCodeImageResource);
+        mBinding.textViewPassengerName.setText(info.passengerName);
+        mBinding.textViewFlightCode.setText(info.flightCode);
+        mBinding.textViewOriginAirport.setText( info.originCode);
+        mBinding.textViewDestinationAirport.setText( info.destCode);
 
-        // TODO (7) Use a SimpleDateFormat formatter to set the formatted value in time text views
+        // COMP (7) Use a SimpleDateFormat formatter to set the formatted value in time text views
+        SimpleDateFormat formatter = new SimpleDateFormat(getString(R.string.timeFormat));
+
+        mBinding.textViewBoardingTime.setText( formatter.format(info.boardingTime));
+        mBinding.textViewDepartureTime.setText( formatter.format(info.departureTime));
+        mBinding.textViewArrivalTime.setText( formatter.format(info.arrivalTime));
 
 
         // TODO (8) Use TimeUnit methods to format the total minutes until boarding
+        int minutesLeftUntilBoarding = 0;
+
+        mBinding.textViewTerminal.setText( info.departureTerminal);
+        mBinding.textViewGate.setText( info.departureGate);
+        mBinding.textViewSeat.setText( info.seatNumber);
+        mBinding.barcode.setImageResource( info.barCodeImageResource);
 
     }
 }
