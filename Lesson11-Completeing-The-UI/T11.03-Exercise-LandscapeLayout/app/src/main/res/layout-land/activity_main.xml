@@ -3,30 +3,29 @@
     COMP (2) Create a new xml file called boarding_table in the layout directory
 
     COMP (9) Copy activity_main.xml into the layout-land folder to have 2 layout xml files for the same activity
-    TODO (10) Re-organize the views in the landscape file to fit all in the one screen
+    COMP (10) Re-organize the views in the landscape file to fit all in the one screen
 -->
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <ScrollView
         android:id="@+id/scroll"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/textViewPassengerLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
                 android:letterSpacing="0.5"
                 android:text="@string/passenger_label"
                 android:textAppearance="@style/TextAppearance.AppCompat.Caption"
@@ -40,29 +39,31 @@
                 android:id="@+id/textViewPassengerName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                 android:textColor="@color/colorPrimary"
-                app:layout_constraintLeft_toLeftOf="parent"
+                android:textSize="30sp"
                 app:layout_constraintTop_toBottomOf="@+id/textViewPassengerLabel"
                 tools:layout_constraintTop_creator="1"
+                tools:layout_editor_absoluteX="8dp"
                 tools:text="@string/passenger_name" />
 
             <!--
                 COMP (3) Move all Views in the flight information section from activity_main to flight_table
                 COMP (5) Add an include tag in activity_main to include flightInfo in the right position
             -->
-            >
 
             <include
                 android:id="@+id/flight_info"
                 layout="@layout/flight_table"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginStart="16dp"
-                app:layout_constraintLeft_toRightOf="parent" />
+                android:layout_width="wrap_content"
+                android:layout_height="220dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintLeft_toLeftOf="@id/textViewPassengerName"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewPassengerName" />
 
 
             <!--
@@ -73,19 +74,33 @@
             <include
                 android:id="@+id/boarding_info"
                 layout="@layout/boarding_table"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginStart="16dp"
-                app:layout_constraintLeft_toLeftOf="parent" />
+                android:layout_width="314dp"
+                android:layout_height="77dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintBottom_toTopOf="@+id/flight_info"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.941"
+                app:layout_constraintStart_toEndOf="@+id/textViewPassengerName"
+                app:layout_constraintTop_toTopOf="parent" />
+
 
             <ImageView
                 android:id="@+id/barcode"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_marginTop="16dp"
-                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="60dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/flight_info"
                 app:layout_constraintTop_toBottomOf="@+id/boarding_info"
                 app:srcCompat="@mipmap/barcode" />
 
