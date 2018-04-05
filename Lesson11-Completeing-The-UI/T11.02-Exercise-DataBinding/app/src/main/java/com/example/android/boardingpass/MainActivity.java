@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         // COMP (4) Set the Content View using DataBindingUtil to the activity_main layout
-        DataBindingUtil.setContentView(this, R.layout.activity_main);
+        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
         // COMP (5) Load a BoardingPassInfo object with fake data using FakeDataUtils
         BoardingPassInfo boardingPassInfo = FakeDataUtils.generateFakeBoardingPassInfo();
