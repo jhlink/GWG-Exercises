@@ -24,6 +24,7 @@ import com.example.android.boardingpass.databinding.ActivityMainBinding;
 import com.example.android.boardingpass.utilities.FakeDataUtils;
 
 import java.text.SimpleDateFormat;
+import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity {
@@ -57,7 +58,8 @@ public class MainActivity extends AppCompatActivity {
         mBinding.textViewDestinationAirport.setText( info.destCode);
 
         // COMP (7) Use a SimpleDateFormat formatter to set the formatted value in time text views
-        SimpleDateFormat formatter = new SimpleDateFormat(getString(R.string.timeFormat));
+        SimpleDateFormat formatter = new SimpleDateFormat(getString(R.string.timeFormat), Locale
+                .getDefault());
 
         mBinding.textViewBoardingTime.setText( formatter.format(info.boardingTime));
         mBinding.textViewDepartureTime.setText( formatter.format(info.departureTime));
