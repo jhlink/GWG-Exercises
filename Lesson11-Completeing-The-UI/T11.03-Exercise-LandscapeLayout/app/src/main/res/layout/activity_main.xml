@@ -50,17 +50,32 @@
 
 <!--
     COMP (3) Move all Views in the flight information section from activity_main to flight_info
-    TODO (5) Add an include tag in activity_main to include flightInfo in the right position
+    COMP (5) Add an include tag in activity_main to include flightInfo in the right position
 -->
 >
+        <include
+            app:layout_constraintLeft_toLeftOf="parent"
+            layout="@layout/flight_info"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/flight_info"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"/>
+
 
 <!--
     COMP (4) Move all Views in the boarding information table from activity_main to boarding_info
-    TODO (6) Add an include tag in activity_main to include boardingInfo in the right position
+    COMP (6) Add an include tag in activity_main to include boardingInfo in the right position
 -->
 
-
-
+        <include
+            app:layout_constraintLeft_toRightOf="parent"
+            layout="@layout/boarding_info"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/boarding_info"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"/>
 
         <ImageView
             android:layout_width="100dp"
@@ -69,7 +84,7 @@
             android:id="@+id/barcode"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tableImage"
+            app:layout_constraintTop_toBottomOf="@+id/boarding_info"
             android:layout_marginTop="16dp"
             />
 
