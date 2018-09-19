@@ -119,9 +119,12 @@ public class AddTaskActivity extends AppCompatActivity {
         // DONE (7) Create a date variable and assign to it the current Date
         Date date = new Date();
 
-        // TODO (8) Create taskEntry variable using the variables defined above
-        // TODO (9) Use the taskDao in the AppDatabase variable to insert the taskEntry
-        // TODO (10) call finish() to come back to MainActivity
+        // DONE (8) Create taskEntry variable using the variables defined above
+        TaskEntry taskEntry = new TaskEntry(description, priority, date);
+        // DONE (9) Use the taskDao in the AppDatabase variable to insert the taskEntry
+        mDB.taskDao().insertTask(taskEntry);
+        // DONE (10) call finish() to come back to MainActivity
+        finish();
     }
 
     /**
