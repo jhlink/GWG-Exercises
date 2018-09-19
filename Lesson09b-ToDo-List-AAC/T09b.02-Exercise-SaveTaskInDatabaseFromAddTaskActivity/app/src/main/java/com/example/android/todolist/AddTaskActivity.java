@@ -58,7 +58,8 @@ public class AddTaskActivity extends AppCompatActivity {
 
         initViews();
 
-        // TODO (4) Initialize member variable for the data base
+        // DONE (4) Initialize member variable for the data base
+        mDB = AppDatabase.getInstance(getApplicationContext());
 
         if (savedInstanceState != null && savedInstanceState.containsKey(INSTANCE_TASK_ID)) {
             mTaskId = savedInstanceState.getInt(INSTANCE_TASK_ID, DEFAULT_TASK_ID);
