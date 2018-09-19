@@ -107,8 +107,9 @@ public class MainActivity extends AppCompatActivity implements TaskAdapter.ItemC
     @Override
     protected void onResume() {
         super.onResume();
-        // TODO (3) Call the adapter's setTasks method using the result
+        // DONE (3) Call the adapter's setTasks method using the result
         // of the loadAllTasks method from the taskDao
+        mAdapter.setTasks(mDB.taskDao().loadAllTasks());
     }
 
     @Override
