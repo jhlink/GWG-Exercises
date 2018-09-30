@@ -84,12 +84,13 @@ public class MainActivity extends AppCompatActivity implements TaskAdapter.ItemC
                     @Override
                     public void run() {
                         int position = viewHolder.getAdapterPosition();
-
+                        List<TaskEntry> tasks = mAdapter.getTasks();
+                        mDb.taskDao().deleteTask(tasks.get(position));
                     }
                 });
 
                 // DONE (3) get the position from the viewHolder parameter
-                // TODO (4) Call deleteTask in the taskDao with the task at that position
+                // DONE (4) Call deleteTask in the taskDao with the task at that position
                 // TODO (6) Call retrieveTasks method to refresh the UI
             }
         }).attachToRecyclerView(mRecyclerView);
