@@ -25,6 +25,7 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 
 import com.example.android.todolist.database.AppDatabase;
+import com.example.android.todolist.database.TaskDao;
 import com.example.android.todolist.database.TaskEntry;
 
 import java.util.Date;
@@ -71,17 +72,25 @@ public class AddTaskActivity extends AppCompatActivity {
             mButton.setText(R.string.update_button);
             if (mTaskId == DEFAULT_TASK_ID) {
                 // populate the UI
-                // TODO (3) Assign the value of EXTRA_TASK_ID in the intent to mTaskId
+                // DONE (3) Assign the value of EXTRA_TASK_ID in the intent to mTaskId
                 // Use DEFAULT_TASK_ID as the default
+                mTaskId = intent.getIntExtra(EXTRA_TASK_ID, DEFAULT_TASK_ID);
 
-                // TODO (4) Get the diskIO Executor from the instance of AppExecutors and
+                // DONE (4) Get the diskIO Executor from the instance of AppExecutors and
                 // call the diskIO execute method with a new Runnable and implement its run method
+                AppExecutors.getInstance().diskIO().execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        // DONE (5) Use the loadTaskById method to retrieve the task with id mTaskId and
+                        // assign its value to a final TaskEntry variable
+                        final TaskEntry task = mDb.taskDao().loadTaskById(mTaskId);
 
-                // TODO (5) Use the loadTaskById method to retrieve the task with id mTaskId and
-                // assign its value to a final TaskEntry variable
+                        // DONE (6) Call the populateUI method with the retrieve tasks
+                        // Remember to wrap it in a call to runOnUiThread
+                        populateUI(task);
+                    }
+                });
 
-                // TODO (6) Call the populateUI method with the retrieve tasks
-                // Remember to wrap it in a call to runOnUiThread
             }
         }
     }
