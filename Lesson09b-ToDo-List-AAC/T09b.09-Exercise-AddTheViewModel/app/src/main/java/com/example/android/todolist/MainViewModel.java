@@ -12,7 +12,7 @@ import com.example.android.todolist.database.TaskEntry;
 import java.util.List;
 
 // DONE (1) make this class extend AndroidViewModel and implement its default constructor
-public class MainViewModel implements AndroidViewModel {
+public class MainViewModel extends AndroidViewModel {
     private static final String TAG = MainViewModel.class.getSimpleName();
 
     // DONE (2) Add a tasks member variable for a list of TaskEntry objects wrapped in a LiveData
