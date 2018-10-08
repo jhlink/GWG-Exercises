@@ -32,8 +32,8 @@ import com.example.android.todolist.database.TaskEntry;
 
 import java.util.List;
 
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.Observer;
+import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.Observer;
 
 import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
 
@@ -136,7 +136,7 @@ public class MainActivity extends AppCompatActivity implements TaskAdapter.ItemC
             @Override
             public void onChanged(List<TaskEntry> taskEntries) {
                 Log.d(TAG, "Receiving database update from LiveData");
-                mAdapter.setTasks(tasks);
+                mAdapter.setTasks(taskEntries);
             }
         });
         // We will be able to simplify this once we learn more
