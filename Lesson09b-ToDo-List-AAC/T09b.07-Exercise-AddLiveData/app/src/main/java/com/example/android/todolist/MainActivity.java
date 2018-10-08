@@ -33,6 +33,7 @@ import com.example.android.todolist.database.TaskEntry;
 import java.util.List;
 
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
 
 import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
 
@@ -87,8 +88,8 @@ public class MainActivity extends AppCompatActivity implements TaskAdapter.ItemC
                         int position = viewHolder.getAdapterPosition();
                         List<TaskEntry> tasks = mAdapter.getTasks();
                         mDb.taskDao().deleteTask(tasks.get(position));
-                        // TODO (6) Remove the call to retrieveTasks
-                        retrieveTasks();
+                        // DONE (6) Remove the call to retrieveTasks
+
                     }
                 });
             }
@@ -111,7 +112,8 @@ public class MainActivity extends AppCompatActivity implements TaskAdapter.ItemC
         });
 
         mDb = AppDatabase.getInstance(getApplicationContext());
-        // TODO (7) Call retrieveTasks from here and remove the onResume method
+        // DONE (7) Call retrieveTasks from here and remove the onResume method
+        retrieveTasks();
     }
 
     /**
@@ -122,26 +124,26 @@ public class MainActivity extends AppCompatActivity implements TaskAdapter.ItemC
     @Override
     protected void onResume() {
         super.onResume();
-        retrieveTasks();
     }
 
     private void retrieveTasks() {
-        AppExecutors.getInstance().diskIO().execute(new Runnable() {
+        // DONE (4) Extract all this logic outside the Executor and remove the Executor
+        Log.d(TAG, "Actively retrieving the tasks from the DataBase");
+        // DONE (3) Fix compile issue by wrapping the return type with LiveData
+        final LiveData<List<TaskEntry>> tasks = mDb.taskDao().loadAllTasks();
+        // DONE (5) Observe tasks and move the logic from runOnUiThread to onChanged
+        tasks.observe(this, new Observer<List<TaskEntry>>() {
+            @Override
+            public void onChanged(List<TaskEntry> taskEntries) {
+                Log.d(TAG, "Receiving database update from LiveData");
+                mAdapter.setTasks(tasks);
+            }
+        });
+        // We will be able to simplify this once we learn more
+        // about Android Architecture Components
+        runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                // TODO (4) Extract all this logic outside the Executor and remove the Executor
-                Log.d(TAG, "Actively retrieving the tasks from the DataBase");
-                // DONE (3) Fix compile issue by wrapping the return type with LiveData
-                final LiveData<List<TaskEntry>> tasks = mDb.taskDao().loadAllTasks();
-                // TODO (5) Observe tasks and move the logic from runOnUiThread to onChanged
-                // We will be able to simplify this once we learn more
-                // about Android Architecture Components
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        mAdapter.setTasks(tasks);
-                    }
-                });
             }
         });
     }
